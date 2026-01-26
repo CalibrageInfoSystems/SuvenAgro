@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1209665391",
+    "project_id": "testproject-6fe6f",
+    "storage_bucket": "testproject-6fe6f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1209665391:android:338cfeb13444e1ce1f8a9a",
+        "android_client_info": {
+          "package_name": "com.cis.palm360.palmgrow.SuvenAgro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbYihlfY2rN-8GdaQlAndLjETS7zdqiBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

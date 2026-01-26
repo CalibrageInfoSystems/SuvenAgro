@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/rounded_background"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/pfuLayout"
+        style="@style/newmoduleBtnStyle"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/Plot_Follow_up"/>
+    <Button
+        android:id="@+id/visitsRel"
+        style="@style/newmoduleBtnStyle"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/Visits"/>
+
+    <Button
+        android:id="@+id/missingTreesRel"
+        style="@style/newmoduleBtnStyle"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/Missing_trees"/>
+
+
+
+    <Button
+        android:id="@+id/notVisitedPlots"
+        style="@style/newmoduleBtnStyle"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/not_visited"/>
+
+
+
+</LinearLayout>

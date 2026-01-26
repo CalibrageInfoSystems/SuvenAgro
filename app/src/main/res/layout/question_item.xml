@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginTop="8dp"
+    card_view:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#222"
+
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="10">
+
+            <RadioGroup
+                android:id="@+id/answer_group"
+                android:orientation="horizontal"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/yes_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:layout_marginEnd="16dp"/>
+
+                <RadioButton
+                    android:id="@+id/no_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_weight="4"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#FF6600"
+                android:visibility="gone"
+
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:drawableEnd="@drawable/calendar"/>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_selectdate"
+            android:text="Select Date *"
+            android:layout_marginTop="12dp"
+            android:textColor="#000"
+            android:visibility="gone"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editDateselection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Select Date"
+            android:gravity="top|start"
+            android:focusable="false"
+            android:editable="false"
+            android:clickable="true"
+            android:maxLength="10"
+
+            android:padding="10dp"
+            style="@style/editTxt_normal"
+            android:textColor="#000"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Company *"
+            android:visibility="gone"
+            android:layout_marginTop="12dp"
+            android:id="@+id/tv_selectcompany"
+            android:textColor="#000"
+            android:textSize="14sp" />
+        <Spinner
+            android:id="@+id/spinner_Compney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/spinner_bg"
+
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_selectpaymentmode"
+            android:text="Select Payment Mode *"
+            android:textColor="#000"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/spinner_payment_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/spinner_bg"
+            android:layout_marginTop="8dp"
+            />
+        <!-- Amount Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_amount"
+            android:text="Amount *"
+            android:textColor="#000"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <EditText android:id="@+id/et_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter Amount "
+            android:inputType="numberDecimal"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:maxLength="10"
+            android:visibility="gone"
+            android:textSize="16sp"/>
+        <!-- DD Bank Name Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_bank_name"
+            android:text="Bank Name *"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
+        <EditText android:id="@+id/et_bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter Bank Name"
+            android:visibility="gone"
+            android:digits="@string/input_type_name"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+
+            android:maxLength="50"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <!-- Check Number Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_checknumber"
+            android:text="Cheque/ Number *"
+            android:textColor="#000"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        <EditText android:id="@+id/etchecknumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+
+            android:inputType="number"
+            android:maxLength="20"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+        <!-- Account Number Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Account Number *"
+            android:textColor="#000"
+            android:id="@+id/tv_account_number"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
+
+        <EditText android:id="@+id/Accountnum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:hint="Enter  Bank Account Number"
+            android:inputType="number"
+            android:maxLength="20"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+        <!-- Trenching Spinner Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_trenching"
+            android:layout_marginTop="12dp"
+            android:text="Trench Marking *"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        <Spinner
+            android:id="@+id/spinner_trenching"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/spinner_bg"
+            android:layout_marginTop="8dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+
+            android:gravity="center_vertical"
+            android:id="@+id/horticulture_honamell"
+            android:weightSum="10">
+
+
+            <TextView
+
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="HO Name"
+                style="@style/textbasic_title"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+               />
+
+            <TextView
+                android:id="@+id/horticulture_honame"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#FF6600"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                />
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horticulture Recommended Plant Count *"
+            android:textColor="#000"
+            android:layout_marginTop="12dp"
+            android:id="@+id/tv_plantcount"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        <EditText android:id="@+id/PlantCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Horticulture Recommended Plant Count"
+            android:inputType="number"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:maxLength="5"
+            android:textColor="#000"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:layout_marginTop="12dp"
+            android:textColor="#000"
+            android:id="@+id/tv_comments"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        <EditText
+            android:id="@+id/editTextComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter your comments (optional)"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:lines="2"
+            android:minLines="2"
+            android:maxLines="6"
+            android:maxLength="100"
+            style="@style/editTxt_normal"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tv_api_bound_text"
+            android:text="Approved by Admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+        <!-- Upload PDF Button -->
+        <Button
+            android:id="@+id/btn_upload_pdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload PDF" />
+
+        <!-- PDF Preview Layout (initially gone) -->
+        <LinearLayout
+            android:id="@+id/layout_pdf_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_pdf_file_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="filename.pdf"
+                android:textColor="@android:color/black" />
+
+            <ImageButton
+                android:id="@+id/btn_cancel_pdf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Delete PDF" />
+        </LinearLayout>
+        <!-- DD Mode of Payment Image Preview -->
+        <!-- Horizontal layout for DD Mode of Payment -->
+        <!-- Layout for Mode of Payment -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/layout_mode_of_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
+
+            <!-- Upload DD Image -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/btn_upload_dd_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/image" />
+                <FrameLayout
+                    android:id="@+id/layout_dd_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="8dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/preview_image_dd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/darker_gray" />
+
+                    <ImageButton
+                        android:id="@+id/btn_delete_image_dd"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:background="@android:color/transparent"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:contentDescription="Delete DD Image" />
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DD Image"
+                    android:id="@+id/tv_dd_image"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <!-- DD Preview FrameLayout -->
+
+        </LinearLayout>
+
+
+        <!-- Layout for Acknowledgement Upload -->
+        <LinearLayout
+            android:id="@+id/layout_acknowledgement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
+
+            <!-- Upload Acknowledgement Image -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/btn_upload_ack_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="8dp"
+
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/image" />
+                <FrameLayout
+                    android:id="@+id/layout_ack_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="8dp"
+                    android:visibility="gone"
+                  >
+
+                    <ImageView
+                        android:id="@+id/preview_image_ack"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/darker_gray" />
+
+                    <ImageButton
+                        android:id="@+id/btn_delete_image_ack"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:background="@android:color/transparent"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:contentDescription="Delete Acknowledgement Image" />
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_ack_image"
+                    android:text="Acknowledgement Image"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+            <!-- Acknowledgement Preview FrameLayout -->
+
+
+        </LinearLayout>
+
+        </LinearLayout>
+        <!-- Image Preview Section for statusTypeId 851 -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btn_add_image_851"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/image" />
+            <FrameLayout
+                android:id="@+id/layout_image_851"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/preview_image_851"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray" />
+
+                <ImageButton
+                    android:id="@+id/delete_image_851"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|top"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:contentDescription="Delete DD Image" />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Material Received Image"
+                android:id="@+id/tvImage851"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btn_add_image_832"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="8dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/image" />
+            <FrameLayout
+                android:id="@+id/layout_image_832"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/preview_image_832"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray" />
+
+                <ImageButton
+                    android:id="@+id/delete_image_832"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|top"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:contentDescription="Delete DD Image" />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drip Installation Image"
+                android:id="@+id/tvImage832"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:visibility="gone"
+            android:backgroundTint="@color/orange"
+            android:layout_gravity="end"
+            android:layout_marginTop="12dp"
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

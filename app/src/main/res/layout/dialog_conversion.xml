@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        style="@style/textbasictitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Conversion"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF"></View>
+
+    <!-- <LinearLayout
+         android:id="@+id/optionAdvancedetails"
+         style="@style/OptionItemStyle"
+         android:background="@drawable/bg_card_green">
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/plantation_audit" />
+
+         <TextView
+             style="@style/textbasictitle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="10dp"
+             android:text="Plantation Audit"
+             android:textColor="#000000" />
+
+         <View
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_weight="1" />
+
+         <ImageView
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:src="@drawable/arrow_right" />
+     </LinearLayout>
+
+     <LinearLayout
+         android:id="@+id/optiondispatchdetails"
+         style="@style/OptionItemStyle"
+         android:background="@drawable/bg_card_green">
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/retake_geo_bound" />
+
+         <TextView
+             style="@style/textbasictitle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="10dp"
+             android:text="Retake Boundaries"
+             android:textColor="#000000" />
+
+         <View
+             android:layout_width="0dp"
+             android:layout_height="40dp"
+             android:layout_weight="1" />
+
+         <ImageView
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:src="@drawable/arrow_right" />
+     </LinearLayout>
+ -->
+    <LinearLayout
+        android:id="@+id/manageAdvanceDetails"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/advance_details_icon" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Plantation DD"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/raiseDispatchSaplingsRequest"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/raise_dispatch_saplings_icon" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Raise Dispatch Saplings Request"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addDispatchSaplings"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/dispatch_saplings_icon" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Add Dispatch Saplings"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+    <!--
+    <LinearLayout
+        android:id="@+id/optionviewdispatchsaplings"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/field_conv" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="View Dispatch Saplings"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+    -->
+    <LinearLayout
+        android:id="@+id/viewDispatchSaplingDetails"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/viewdispatch" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="View Dispatch Sapling Details"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionConversion"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/field_conv" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Field Conversion"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+    <!-- Four options -->
+
+
+    <LinearLayout
+        android:id="@+id/optionretakeboundaries"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/retake_geo_bound" />
+
+        <TextView
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Retake Boundaries"
+            android:textColor="#000000" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>    <!-- Option 4: Follow Up -->
+</LinearLayout>

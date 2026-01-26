@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".conversion.ApprovedFieldsActivity"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/toolbar_common">
+
+    </include>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize">
+
+        <com.cis.palm360.palmgrow.SuvenAgro.uihelper.InteractiveScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbarStyle="outsideOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/nursery"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/nursery" />
+
+                        <Spinner
+                            android:id="@+id/spinner_nursery"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/spinner_bg"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/batch"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/batch" />
+
+                        <Spinner
+                            android:id="@+id/spinner_batch"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/spinner_bg"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/spinnerSaplingVariety"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/sapling_variety"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/sapling_variety" />
+
+                        <Spinner
+                            android:id="@+id/spinner_sapling_variety"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/spinner_bg"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/spinnerSaplingVendor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/sapling_vendor"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/sapling_Vendor" />
+
+                        <Spinner
+                            android:id="@+id/spinner_sapling_vendor"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/spinner_bg"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/imported_batch" />
+
+                        <EditText
+                            android:id="@+id/imported_batch"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/indigenous_batch" />
+
+                        <EditText
+                            android:id="@+id/indigenous_batch"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/advance_receipt_number"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/advance_receipt_number" />
+
+                        <Spinner
+                            android:id="@+id/spinner_advance_receiptNo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/spinner_bg"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/pending_advance_saplings" />
+
+                        <EditText
+                            android:id="@+id/pending_advance_sapling"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/indigenous_grower_contribution_price" />
+
+                        <EditText
+                            android:id="@+id/indigenous_grower_contribution"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="numberDecimal"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/indigenous_subsidy_price" />
+
+                        <EditText
+                            android:id="@+id/indigenous_subsidy_price"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="numberDecimal"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/imported_grower_contribution_price" />
+
+                        <EditText
+                            android:id="@+id/imported_grower_contribution_price"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/imported_subsidy_price" />
+
+                        <EditText
+                            android:id="@+id/imported_subsidy_price"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="numberDecimal"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/imported_dispatches"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/imported_sapling_dispatches" />
+
+                    <EditText
+                        android:id="@+id/imported_sapling_dispatches"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+
+                        android:inputType="number"
+                        />
+                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/indigenous_dispatches"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/indigenous_sapling_dispatches" />
+
+                        <EditText
+                            android:id="@+id/indigenous_sapling_dispatches"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                           android:maxLength="8"
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/sapling_dispatched" />
+
+                        <EditText
+                            android:id="@+id/sapling_dispatched"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:inputType="number"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/sapling_pickup_date"
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/sapling_pickup_date" />
+
+                        <EditText
+                            android:id="@+id/pickup_date"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:inputType="date"
+                            android:drawableRight="@drawable/calendar"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/comments" />
+
+                        <EditText
+                            android:id="@+id/comments"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="end"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="@dimen/margin_top_layout">
+
+                        <Button
+                            android:id="@+id/close_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cancel"
+                            android:textColor="@color/white"
+                            android:padding="10dp"
+                            android:drawableLeft="@drawable/cancel"
+                            android:layout_marginRight="8dp"
+                            android:backgroundTint="@color/red"/>
+
+                        <Button
+                            android:id="@+id/add_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/save_print"
+                            android:textColor="@color/white"
+                            android:padding="10dp"
+                            android:drawableLeft="@drawable/correct"
+                            android:backgroundTint="@color/orange"
+                            android:layout_marginRight="8dp"/>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.cis.palm360.palmgrow.SuvenAgro.uihelper.InteractiveScrollView>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

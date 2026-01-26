@@ -1,0 +1,953 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.cis.palm360.palmgrow.SuvenAgro.areaextension.PlotDetailsFragment">
+
+    <include
+        android:id="@+id/toolbarlayout"
+        layout="@layout/toolbar_common">
+
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize"
+        android:visibility="visible">
+
+        <com.cis.palm360.palmgrow.SuvenAgro.uihelper.InteractiveScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbarStyle="outsideOverlay">
+
+            <LinearLayout
+                android:id="@+id/parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/regionTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_weight="1"
+                        android:fontFamily="Roboto_Regular"
+                        android:gravity="left"
+                        android:text="Region" />
+
+                    <Spinner
+                        android:id="@+id/regionSpin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/stateTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="Roboto_Regular"
+                        android:gravity="left"
+                        android:text="@string/P_State" />
+
+                    <Spinner
+                        android:id="@+id/statespin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"
+                        android:background="@drawable/spinner_bg" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/districtTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="Roboto_Regular"
+                        android:gravity="left"
+                        android:text="@string/p_District" />
+
+                    <Spinner
+                        android:id="@+id/districtSpin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg">
+
+                    </Spinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/mandal" />
+
+                    <Spinner
+                        android:id="@+id/mandalName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"
+                      />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/village_name_label_man" />
+
+                    <Spinner
+                        android:id="@+id/villageName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/Cluster" />
+
+                    <TextView
+                        android:id="@+id/Cluster_Name"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="@string/pincode_text" />
+
+                    <EditText
+                        android:id="@+id/pincode"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:digits="0123456789"
+                        android:maxLength="10" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="@string/plotCode" />
+
+                    <TextView
+                        android:id="@+id/plotCodeTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="@string/Plot_Id" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="@string/farmer_Gov_plotid" />
+
+                    <EditText
+                        android:id="@+id/farmer_gvt_id"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:digits="@string/aplhanumeric_type1"
+                        android:maxLength="30" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/converstionSurveyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                 >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title_multi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/survey_number" />
+
+                        <EditText
+                            android:id="@+id/Survey_no_edt"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:digits="@string/digits"
+                          >
+
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title_multi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/adangal_file_no" />
+
+                        <EditText
+                            android:id="@+id/adangal_edt"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:digits="@string/aplhanumeric_type1"
+                            android:inputType="textNoSuggestions|textVisiblePassword"
+                            android:maxLength="30">
+
+                        </EditText>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/plotareatv"
+                        style="@style/header_h1_text_title_multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+<!--                    <EditText-->
+<!--                        android:focusable="false"-->
+<!--                        android:editable="false"-->
+<!--                        android:id="@+id/plot_area_edt"-->
+<!--                        style="@style/editTxt_normal"-->
+<!--                        android:layout_width="0dp"-->
+<!--                       android:longClickable="false"-->
+<!--                    android:layout_height="50dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:inputType="numberDecimal"-->
+<!--                        android:maxLength="5">-->
+<!--                    </EditText>-->
+
+<!--&lt;!&ndash;                    </EditText>&ndash;&gt; //TODO ROja-->
+                    <EditText
+
+                        android:id="@+id/plot_area_edt"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:longClickable="false"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title_multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/area_horticulture" />
+
+                    <EditText
+                        android:id="@+id/totalAreaHorticulture"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/area_suitable_palm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/underpalmtv"
+                        style="@style/header_h1_text_title_multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                         />
+
+                    <EditText
+                        android:id="@+id/area_suitable_palm_edit"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5">
+
+                    </EditText>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title_multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/land_mark" />
+
+                    <EditText
+                        android:id="@+id/land_mark_edt"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:digits="@string/digits"
+                        android:maxLength="30">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title_multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/plot_address" />
+
+                    <EditText
+                        android:id="@+id/plot_address"
+                        style="@style/editTxt_normal"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:digits="@string/digits"
+                        android:maxLength="30">
+
+                    </EditText>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/proper_boundry_fencing" />
+
+                    <Spinner
+                        android:id="@+id/ipbfSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/ownLeaseTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ownership" />
+
+                    <Spinner
+                        android:id="@+id/ownerShipSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/land_type" />
+
+                    <Spinner
+                        android:id="@+id/landTypeSpn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"/>
+                </LinearLayout>
+
+                <include layout="@layout/land_lord_details">
+
+                </include>
+
+                <LinearLayout
+                    android:id="@+id/careTakerEntrylayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/careTakerTxt"
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Is Field is looking after by Caretaker? *" />
+
+                    <Spinner
+                        android:id="@+id/careTakerSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/careTakerlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                 >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title_multi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/caretaker_name" />
+
+                        <EditText
+                            android:id="@+id/caretakernameEdt"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:maxLength="30" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header_h1_text_title_multi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/caretaker_contact_no" />
+
+                        <EditText
+                            android:id="@+id/caretakercontactnumlEdt"
+                            style="@style/editTxt_normal"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:inputType="number"
+                            android:maxLength="10">
+
+                        </EditText>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/incomeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/header_h1_text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/income_from_current_crops" />
+
+                    <Spinner
+                        android:id="@+id/incomefromCurrentCropsSpinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/spinner_bg"/>
+                </LinearLayout>
+
+<!--       New Images         -->
+
+
+                <LinearLayout
+                    android:id="@+id/farmerphotoLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/farmerphotoTitle"
+                        style="@style/header_h1_text_title_with_background"
+                        android:text="PPB Images *" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingHorizontal="5dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:id="@+id/farmer_image_1"
+                            android:layout_width="0dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/image" />
+
+                        <ImageView
+                            android:id="@+id/farmer_image_2"
+                            android:layout_width="0dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/image" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+<!--       End         -->
+
+                <LinearLayout
+                    android:id="@+id/currentCropsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/current_crop_grown" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/areaofcc_tv"
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/area_of_current_crop" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/income_from_current_crops" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@color/colorPrimary" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/currentCropRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:id="@+id/addRowImg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/plus" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    style="@style/header_h1_text_title_with_background"
+                    android:text="@string/crops_grown_under_neighbour_plots" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_layout"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/neighbourPlot_insert" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/crop_heading" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/header_h1_text_title_multi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/unfavourable_for_oil_palm" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@color/colorPrimary" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/neighbourPlotRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_top_layout"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:id="@+id/addRowImgNbPlot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/plus" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/plotSaveBtn"
+                        style="@style/basicBtnStyle"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/submit_btn" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.cis.palm360.palmgrow.SuvenAgro.uihelper.InteractiveScrollView>
+
+        <ImageView
+            android:id="@+id/bottomScroll"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/scroll_down"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

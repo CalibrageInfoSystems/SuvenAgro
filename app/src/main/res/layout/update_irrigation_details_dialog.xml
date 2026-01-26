@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_update_irrigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:text="Update Irrigation Details"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Type of Irrigation Spinner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_layout"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/header_h1_text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/typeofirrigation" />
+
+        <Spinner
+            android:id="@+id/typeOfIrrigationSpinner"
+            style="@style/spinner_bg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_layout"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            style="@style/header_h1_text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Irrigation Recommendation*" />
+
+        <Spinner
+            android:id="@+id/irrigationRecommendationSpinner"
+            style="@style/spinner_bg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/dripexist" />
+
+            <Spinner
+                android:id="@+id/dripExistSpinner"
+                style="@style/spinner_bg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/yesOrNo_values">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/section2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_layout"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/header_h1_text_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="HP ID Number *" />
+
+                <EditText
+                    android:id="@+id/etHPNumber"
+                    style="@style/editTxt_normal"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:digits="@string/digits2"
+                    android:maxLength="20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/section3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_layout"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/compneytext1"
+                    style="@style/header_h1_text_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/drip_company" />
+
+                <Spinner
+                    android:id="@+id/existDripCompanySpinner"
+                    style="@style/spinner_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/section4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_layout"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/header_h1_text_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Drip Installed Date *" />
+
+                <EditText
+                    android:id="@+id/dripInstalledDate"
+                    style="@style/editTxt_normal"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:focusable="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dripexistnoLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/pridripCompanyLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/compneytext"
+                style="@style/header_h1_text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/dripcompany" />
+
+            <Spinner
+                android:id="@+id/dripcmneySpin"
+                style="@style/spinner_bg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SecdripCompanyLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_layout"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                style="@style/header_h1_text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/dripScompany" />
+
+            <Spinner
+                android:id="@+id/dripcmney2Spin"
+                style="@style/spinner_bg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/WaterpumpLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_layout"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                style="@style/header_h1_text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Water Pump *" />
+
+            <Spinner
+                android:id="@+id/watwrpumpSpin"
+                style="@style/spinner_bg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Capacity(HP) *" />
+
+            <EditText
+                android:id="@+id/capacity"
+                style="@style/editTxt_normal"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:maxLength="8" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_dialog_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="10"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/dialogBasicBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/btn_update"
+            style="@style/dialogBasicBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Update"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/irrigationSaveBtn"-->
+<!--            style="@style/dialogBasicBtnStyle"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="Update" />-->
+
+
+<!--    </LinearLayout>-->
+</LinearLayout>

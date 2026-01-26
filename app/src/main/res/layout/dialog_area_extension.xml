@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+
+    >
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Field Expansion"
+        style="@style/textbasictitle"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="10dp" />
+    <View
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp">
+
+    </View>
+
+    <!-- Four options -->
+    <LinearLayout
+        android:id="@+id/optionNewGrower"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/newgrower" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Field New Grower"
+            style="@style/textbasictitle"
+            android:layout_marginStart="10dp"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionExistingGrower"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/newfield" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Field Existing Grower"
+            android:layout_marginStart="10dp"
+            style="@style/textbasictitle"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionProspective"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/prospective_fields" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prospective Fields"
+            android:layout_marginStart="10dp"
+            style="@style/textbasictitle"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionFollowUp"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/follow_up_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Follow Up"
+            android:layout_marginStart="10dp"
+            style="@style/textbasictitle"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fieldFollowUp"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/follow_up_field" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Field Follow Up"
+            android:layout_marginStart="10dp"
+            style="@style/textbasictitle"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+    <!-- Option 4: Follow Up -->
+    <LinearLayout
+        android:id="@+id/optiondripfollowup"
+        style="@style/OptionItemStyle"
+        android:background="@drawable/bg_card_green">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/drip_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drip Follow Up"
+            android:layout_marginStart="10dp"
+            style="@style/textbasictitle"
+            android:textColor="#000000" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+</LinearLayout>

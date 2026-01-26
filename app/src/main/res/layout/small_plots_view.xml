@@ -1,0 +1,476 @@
+ <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/focusable"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/RLplotdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/chkSelected">
+
+            <!-- Plot ID -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Code"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvplotidvalue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="FieldId"
+                    />
+            </LinearLayout>
+
+            <!-- Govt Plot ID -->
+            <LinearLayout
+                android:id="@+id/govt_plot_id_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Government Field Code"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvgvtplotidvalue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                 />
+            </LinearLayout>
+
+            <!-- Village -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Village "
+                    android:textStyle="bold"
+                   />
+                <TextView
+                    android:id="@+id/tvplotvillagevalue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Village"
+                />
+            </LinearLayout>
+
+            <!-- Landmark -->
+            <LinearLayout
+                android:id="@+id/landmark_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Landmark "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvplotlandmarkvalue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Landmark"
+                    android:singleLine="false"
+                    android:scrollHorizontally="false"
+                    android:breakStrategy="simple"
+                   />
+            </LinearLayout>
+
+            <!-- Area -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Total Field Area "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvplotareavalue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Area"
+                   />
+            </LinearLayout>
+
+            <!-- Survey Number -->
+            <LinearLayout
+                android:id="@+id/survey_number_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Survey Number "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvplotsurveyvalue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:text="Field survey number"
+                    android:singleLine="false"
+                    android:scrollHorizontally="false"
+                    android:breakStrategy="simple" />
+
+
+            </LinearLayout>
+
+            <!-- DOP -->
+            <LinearLayout
+                android:id="@+id/plotDOP_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Date Of Planting "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvplotDOP"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field DOP"
+                    />
+            </LinearLayout>
+
+            <!-- Visit Count (hidden) -->
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Visit Count"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/vistCount"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field VisitCount"
+                 />
+            </LinearLayout>
+
+            <!-- Latest Visit Date -->
+            <LinearLayout
+                android:id="@+id/lastest_vistDate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Last CM Visit Date "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lastest_vistDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field LatestDate"
+                 />
+            </LinearLayout>
+
+            <!-- Latest Harvest Date -->
+            <LinearLayout
+                android:id="@+id/lastest_harvestDate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Last Harvesting Date "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lastest_harvestDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field LatestDate"
+                   />
+            </LinearLayout>
+
+            <!-- Plot Status (hidden) -->
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/plot_status_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text="Field Status "
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plot_Status"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    style="@style/header_h1_text_title_list_item"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                  />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--
+                <LinearLayout
+                    android:id="@+id/RLplotdetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toLeftOf="@+id/chkSelected">
+
+
+                    <TextView
+                        android:id="@+id/tvplotidvalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:paddingTop="4dp"
+                        android:text="FieldId"
+                        android:textSize="16dp"/>
+                    <TextView
+                        android:id="@+id/tvgvtplotidvalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:paddingTop="4dp"
+                        android:text="FieldId"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvplotvillagevalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field Village"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvplotlandmarkvalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field LandMark"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvplotareavalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field Area"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvplotsurveyvalue"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field survey number"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/tvplotDOP"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field DOP"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/vistCount"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field VistCount"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/lastest_vistDate"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field LatestDate"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/lastest_harvestDate"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="Field LatestDate"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/plot_Status"
+                        style="@style/header_h1_text_title_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"/>
+
+
+                </LinearLayout>
+        -->
+
+        <CheckBox
+            android:id="@+id/chkSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/arrow_right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/arrow_point_to_right"
+            android:textColor="@color/action_color"
+            android:textSize="11sp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+        <ImageButton
+            android:id="@+id/ivb_plot_location_cropcollection"
+            android:layout_marginRight="-15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/cardview_light_background"
+            android:scaleType="fitCenter"
+
+            android:src="@mipmap/geo_tag" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

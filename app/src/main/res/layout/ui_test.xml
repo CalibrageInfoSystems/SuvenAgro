@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+<!--  Body  -->
+    <RelativeLayout
+        android:id="@+id/content_home_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/homebgcolor"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.cis.palm360.palmgrow.SuvenAgro.ui.HomeScreen">
+        <LinearLayout
+            android:id="@+id/bottom_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="@drawable/homebg"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="60dp"
+                >
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="20dp"
+                        >
+                        <!--item 1-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_marginEnd="30dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/card1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="@drawable/custom_card_bg"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:background="@drawable/custom_card_bg"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                                <FrameLayout
+                                    android:id="@+id/arcFrame"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:clipChildren="false"
+                                    android:clipToPadding="false"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintWidth_percent="0.75"
+                                    app:layout_constraintHeight_percent="0.6">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/bg_bottom_right_arc" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:src="@drawable/frame" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="12dp"
+                                    android:text="Area\nExtension"
+                                    android:textColor="#C25100"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <!--item 2-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            >
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/card2"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="@drawable/custom_card_bg"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:background="@drawable/custom_card_bg_green"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                                <FrameLayout
+                                    android:id="@+id/arcFrame2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:clipChildren="false"
+                                    android:clipToPadding="false"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintWidth_percent="0.75"
+                                    app:layout_constraintHeight_percent="0.6">
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/bg_bottom_right_arc_green" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:src="@drawable/conversion" />
+                                </FrameLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="12dp"
+                                    android:text="Conversion"
+                                    android:textColor="#0B580B"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/transportServiceLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:visibility="visible">
+
+
+                            <ImageView
+                                android:id="@+id/transportServiceQuestioner"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/log_book"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/transportServiceText"
+                                style="@style/moduleHomeBtnStyle"
+                                android:layout_below="@+id/transportServiceQuestioner"
+                                android:text="@string/TransportServiceQuestioner"
+                                android:visibility="visible" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

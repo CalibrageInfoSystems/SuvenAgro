@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_no_visit_plotslist_screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/dateSelection"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/header_h1_text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="From Date" />
+
+            <EditText
+                android:id="@+id/fromDate"
+                style="@style/editTxt_normal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/header_h1_text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="To Date" />
+
+            <EditText
+                android:id="@+id/toDate"
+                style="@style/editTxt_normal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/searchBtnT"
+            style="@style/basicBtnStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:text="Search"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
+
+<!--    <android.support.design.widget.T
+        android:background="?attr/colorPrimary"abLayout-->
+<!--        android:id="@+id/tablayout"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/green"-->
+<!--        app:tabBackground="@drawable/tab_color_selector"-->
+<!--        app:tabSelectedTextColor="@color/green"-->
+<!--        app:tabTextAppearance="@style/TabLayoutStyle"-->
+<!--        app:tabTextColor="@color/white">-->
+
+<!--        <android.support.design.widget.TabItem-->
+<!--            android:id="@+id/tabcrop"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Common_textView"-->
+<!--            android:text="@string/crop_maintenancevisit" />-->
+
+<!--        <android.support.design.widget.TabItem-->
+<!--            android:id="@+id/tabHarvest"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Common_textView"-->
+<!--            android:text="@string/harvesting" />-->
+<!--    </android.support.design.widget.TabLayout>-->
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="?attr/colorPrimary"
+        app:tabIndicatorColor="#016A0A"
+        app:tabTextColor="@android:color/black"
+        app:tabMode="fixed"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabIndicatorFullWidth="true"
+        app:tabMinWidth="0dp"
+        app:tabMaxWidth="0dp">
+
+</com.google.android.material.tabs.TabLayout>
+
+
+
+<androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

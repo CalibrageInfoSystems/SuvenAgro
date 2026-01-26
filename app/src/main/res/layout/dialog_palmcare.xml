@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/dialogRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+
+        >
+
+        <TextView
+            android:id="@+id/dialogTitle"
+            style="@style/textbasictitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Palm Care"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF">
+
+        </View>
+
+        <!-- Four options -->
+        <LinearLayout
+            android:id="@+id/docrop"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/do_crop_main" />
+
+            <TextView
+                style="@style/textbasictitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/docropmaintenance"
+                android:textColor="#000000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/closecrop"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/com_crop_main" />
+
+            <TextView
+                style="@style/textbasictitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/closecropmaintenance"
+                android:textColor="#000000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/doharvesting"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/harvesting_visit" />
+
+            <TextView
+                style="@style/textbasictitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/doharvesting"
+                android:textColor="#000000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/closeharvesting"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/close_harvesting_visit" />
+
+            <TextView
+                style="@style/textbasictitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/closeharvesting"
+                android:textColor="#000000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+        <!-- Option 4: Follow Up -->
+        <LinearLayout
+            android:id="@+id/notvisitedplots"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/not_visited_fields" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notvisitedplots"
+                style="@style/textbasictitle"
+                android:layout_marginStart="10dp"
+                android:textColor="#000000" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/visit"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/visited_fields" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Visits"
+                android:layout_marginStart="10dp"
+                style="@style/textbasictitle"
+                android:textColor="#000000" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/missingtrees"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/missed_tree" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Missing_Trees"
+                android:layout_marginStart="10dp"
+                style="@style/textbasictitle"
+                android:textColor="#000000" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/viewonmap"
+            style="@style/OptionItemStyle"
+            android:visibility="gone"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/view_on_map" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View On Map"
+
+                android:layout_marginStart="10dp"
+                style="@style/textbasictitle"
+                android:textColor="#000000" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/visitrequest"
+            style="@style/OptionItemStyle"
+            android:background="@drawable/bg_card_green">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/visit_request" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visit Request"
+                android:layout_marginStart="10dp"
+                style="@style/textbasictitle"
+                android:textColor="#000000" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

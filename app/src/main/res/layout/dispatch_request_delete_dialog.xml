@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="This is my custom Dialog" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Field Code" />
+
+            <TextView
+                android:id="@+id/plotcode_txt"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Grower Code" />
+
+            <TextView
+                android:id="@+id/tv_grower_code"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Advance Receipt Number" />
+
+            <TextView
+                android:id="@+id/receiptId"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="No of Imported Saplings To Dispatch" />
+
+            <TextView
+                android:id="@+id/NoofImportedSaplings_text"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="No of Indigenous Saplings To Dispatch" />
+
+            <TextView
+                android:id="@+id/noofIndegenoussapling_txt"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="No of Saplings To Dispatch" />
+
+            <TextView
+                android:id="@+id/noofsaplingstodispatch_text"
+                style="@style/header_h1_text_title_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/btnContainer"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/No"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="No"
+                android:textColor="@color/green"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                style="@style/custom_dialog_normal"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
+            <Button
+                android:id="@+id/Yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="Yes"
+                android:textColor="@color/btnPressedColor"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                style="@style/custom_dialog_normal"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
