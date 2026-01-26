@@ -184,14 +184,7 @@ public class HomeScreen extends AppCompatActivity {
 
             Log.d("ActivityRight", "Name: " + name + ", Desc: " + desc + ", Screen: " + screenName);
         }
-//        TracktypeID = dataAccessHandler.getOnlyOneIntValueFromDb(Queries.getInstance().gettrcketype(CommonConstants.USER_ID));
-//        Log.d("TracktypeID", TracktypeID+"");
-//        if (!punchStatus) {
-//            showCheckInDialog(false);
-//        }
-//        else if (shouldShowCheckOutDialog()) {
-//            showCheckInDialog(true);
-//        }
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fetchCurrentLocation();
 
@@ -212,16 +205,6 @@ public class HomeScreen extends AppCompatActivity {
         });
         layout3.setOnClickListener(view -> showpalmcareDialog());
 
-//        layout4.setOnClickListener(view -> {
-//            // create new activity  here shows list button add one button after then will call fragment complaintsDetailsFragment
-//              CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_COMPLAINT;
-//            Intent intent = new Intent(HomeScreen.this, SearchFarmerScreen.class);
-//            startActivity(intent);
-//            //  Intent in_compalints = new Intent(HomeScreen.this,ComplaintsScreenActivity.class).putExtra("plot",false);
-////            Intent in_compalints = new Intent(HomeScreen.this, ComplaintsScreenActivity.class);
-////            startActivity(in_compalints);
-//        });
-
         prospectiveFarmersRel.setOnClickListener(view -> {
             resetPrevRegData();
             CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_VPF;
@@ -234,32 +217,6 @@ public class HomeScreen extends AppCompatActivity {
         iv_punchIcon.setOnClickListener(view -> {
             showCheckInDialog(true);
         });
-
-/*        layout2.setOnClickListener(v -> {   //Field Conversion todo
-            resetPrevRegData();
-            CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_CONVERSION;
-            Intent intent = new Intent(HomeScreen.this, SearchFarmerScreen.class);
-            startActivity(intent);
-        });*/
-//
-//        cropMaintenanceRel.setOnClickListener(view -> {
-//            resetPrevRegData();
-//            CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_CP_MAINTENANCE;
-//            startActivity(new Intent(HomeScreen.this, SearchFarmerScreen.class));
-//        });
-
-
-
-   /*     layout3.setOnClickListener(view -> {
-            resetPrevRegData();
-            startActivity(new Intent(HomeScreen.this, palmcareScreen.class));
-        });*/
-
-//        harvestingRel.setOnClickListener(view -> {
-//            resetPrevRegData();
-//            CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_HARVESTING;
-//            startActivity(new Intent(HomeScreen.this, SearchFarmerScreen.class));
-//        });
 
         planationAuditRel.setOnClickListener(view -> {
             resetPrevRegData();
@@ -285,24 +242,12 @@ public class HomeScreen extends AppCompatActivity {
             startActivity(new Intent(HomeScreen.this, RefreshSyncActivity.class));
         });
 
-//        mapsLayout.setOnClickListener(view -> {
-//            resetPrevRegData();
-//            CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_Viewonmaps;
-//            startActivity(new Intent(HomeScreen.this, SearchFarmerScreen.class));
-//        });
         mapsLayout.setOnClickListener(view -> {
             resetPrevRegData();
             CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_Viewonmaps;
             startActivity(new Intent(HomeScreen.this, FiltermapsActivity.class));
         });
-//        transportServiceLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                resetPrevRegData();
-//                CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_VISIT_REQUESTS;
-//                startActivity(new Intent(HomeScreen.this, TransportActivity.class));
-//            }
-//        });
+
         //  List<Map<String, String>> activityRights = dataAccessHandler.getActivityRightsForUser(262);
         List<String> activityRightsScreens = new ArrayList<>();
         for (Map<String, String> right : activityRights) {
@@ -315,15 +260,6 @@ public class HomeScreen extends AppCompatActivity {
             Intent intent = new Intent(HomeScreen.this, SearchFarmerScreen.class);
             startActivity(intent);
         });
-//        if (activityRightsScreens.contains("CanViewGrowerComplaints")) {
-//            layout4.setOnClickListener(view -> {
-//                CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_COMPLAINT;
-//                Intent intent = new Intent(HomeScreen.this, SearchFarmerScreen.class);
-//                startActivity(intent);
-//            });
-//        } else {
-//            layout4.setVisibility(View.GONE);
-//        }
 
 // Layout5: KRAs (e.g., CanViewKRAs)
         if (activityRightsScreens.contains("CanViewUserKRA")) {
@@ -569,34 +505,6 @@ public class HomeScreen extends AppCompatActivity {
         }
         return null;
     }
-
-
- /*   private void dispatchTakePictureIntent(int actionCode) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        switch (actionCode) {
-            case CAMERA_REQUEST:
-                File f = null;
-                mCurrentPhotoPath = null;
-                try {
-                    f = setUpPhotoFile(isPunchInFlag);
-                    mCurrentPhotoPath = f.getAbsolutePath();
-                    Uri photoURI = FileProvider.getUriForFile(this,
-                            BuildConfig.APPLICATION_ID + ".provider",
-                            f);
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    f = null;
-                    mCurrentPhotoPath = null;
-                }
-                break;
-
-            default:
-                break;
-        } // switch
-        startActivityForResult(takePictureIntent, actionCode);
-    }*/
-
     private void dispatchTakePictureIntent(int actionCode, int isPunchIn) {
         currentIsPunchIn = isPunchIn;
         Log.d("======>isPunchIninsert", currentIsPunchIn+"");// store the value
@@ -631,18 +539,8 @@ public class HomeScreen extends AppCompatActivity {
         return f;
     }
 
-//    private File createImageFile() {
-//        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "EmpPunchDetails");
-//        if (!pictureDirectory.exists()) {
-//            pictureDirectory.mkdirs();
-//        }
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
-//                Locale.getDefault()).format(new Date());
-//        finalFile = new File(pictureDirectory, "PunchDetails_" + timeStamp + CommonConstants.JPEG_FILE_SUFFIX);
-//        return finalFile;
-//    }
     private File createImageFile(int isPunchIn) {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "EmpPunchDetails");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "EmpPunchDetails");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }
@@ -656,32 +554,7 @@ public class HomeScreen extends AppCompatActivity {
         return finalFile;
     }
 
-
-/*    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case CAMERA_REQUEST: {
-                if (resultCode == RESULT_OK) {
-                    try {
-                        handleBigCameraPhoto(isPunchInFlag);
-                        if (dialog != null && dialog.isShowing()) {
-                            dialog.dismiss();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    mCurrentPhotoPath = null;
-                    showCheckInDialog(isPunchInFlag);
-                }
-                break;
-            }
-
-
-        } // switch
-    }*/
-@Override
+    @Override
 public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == CAMERA_REQUEST) {
@@ -700,28 +573,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         }
     }
 
-//    if (requestCode == CAMERA_REQUEST) {
-//        if (resultCode == RESULT_OK) {
-//            int isPunchIn = 1; // Default
-//            if (data != null && data.hasExtra("IsPunchIn")) {
-//                isPunchIn = data.getIntExtra("IsPunchIn", 1);
-//            } else if (!isPunchInFlag) {
-//                isPunchIn = 0;
-//            }
-//
-//            try {
-//                handleBigCameraPhoto(isPunchIn);
-//                if (dialog != null && dialog.isShowing()) {
-//                    dialog.dismiss();
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            mCurrentPhotoPath = null;
-//            showCheckInDialog(isPunchInFlag);
-//        }
-//    }
 }
 
 
@@ -881,24 +732,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
             android.util.Log.e("Save Image", "Error saving image", e);
         }
     }
-
-
-//    private void fetchCurrentLocation() {
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            return;
-//        }
-//        fusedLocationClient.getLastLocation()
-//                .addOnSuccessListener(this, location -> {
-//                    if (location != null) {
-//                        latitude = location.getLatitude();
-//                        longitude = location.getLongitude();
-//                        Log.d("punchDetails", "Lat: " + latitude + ", Lng: " + longitude);
-//                    } else {
-//                        Log.d("punchDetails", "Location is null");
-//                    }
-//                });
-//    }
-
     private void fetchCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
@@ -955,29 +788,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
             return "Unable to fetch address";
         }
     }
-
-
-    /*    private Bitmap rotateImageIfRequired(Bitmap img, String photoPath) throws IOException {
-            ExifInterface ei = new ExifInterface(photoPath);
-            int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-
-            Matrix matrix = new Matrix();
-            switch (orientation) {
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    matrix.postRotate(90);
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    matrix.postRotate(180);
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_270:
-                    matrix.postRotate(270);
-                    break;
-                default:
-                    return img; // No rotation needed
-            }
-
-            return Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
-        }*/
     private Bitmap rotateImageIfRequired(Bitmap img, String photoPath) {
         try {
             ExifInterface ei = new ExifInterface(photoPath);
@@ -1013,76 +823,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
     }
-
-//    private void openCamera() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//            try {
-//                photoFile = createImageFile();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//                return;
-//            }
-//
-//            photoURI = FileProvider.getUriForFile(this,
-//                    getPackageName() + ".provider",
-//                    photoFile);
-//            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
-
-//    private File createImageFile() throws IOException {
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-//        String imageFileName = "JPEG_" + timeStamp + "_";
-//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//        return File.createTempFile(imageFileName, ".jpg", storageDir);
-//    }
-
-//    private void getCurrentLocation() {
-//        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-//
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            Log.e("punchDetails", "Permission not granted");
-//            return;
-//        }
-//
-//        fusedLocationClient.getLastLocation()
-//                .addOnSuccessListener(this, location -> {
-//                    if (location != null) {
-//                        double latitude = location.getLatitude();
-//                        double longitude = location.getLongitude();
-//                        Log.d("punchDetails", "Lat: " + latitude + ", Lng: " + longitude);
-//                        Log.d("punchDetails", "Captured image path: " + photoFile.getAbsolutePath());
-//                        SharedPreferences prefs = getSharedPreferences(CommonConstants.punchSharedPreferences, Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = prefs.edit();
-//                        editor.putBoolean(CommonConstants.punchStatus, true);
-//                        editor.apply();
-//                    } else {
-//                        Log.d("punchDetails", "Location is null");
-//                    }
-//                });
-//    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        try {
-//            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//                if (photoFile != null) {
-//                    getCurrentLocation();
-    ////                     SharedPreferences prefs = getSharedPreferences(CommonConstants.punchSharedPreferences, Context.MODE_PRIVATE);
-    ////                     SharedPreferences.Editor editor = prefs.edit();
-    ////                     editor.putBoolean(CommonConstants.punchStatus, true);
-    ////                     editor.apply();
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Log.e("punchDetails", "Catch Exception: " + e.getMessage());
-//        }
-//    }
 
     private void showpalmcareDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -1193,19 +933,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         } else {
             missingtrees.setVisibility(View.GONE);
         }
-
-        // View on Map
-//        View viewonmap = dialogView.findViewById(R.id.viewonmap);
-//        if (activityRightsScreens.contains("CanViewPlotsOnMap")) {
-//            viewonmap.setOnClickListener(v -> {
-//                resetPrevRegData();
-//                CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_Viewonmaps;
-//                startActivity(new Intent(this, FiltermapsActivity.class));
-//                dialog.dismiss();
-//            });
-//        } else {
-//            viewonmap.setVisibility(View.GONE);
-//        }
 
         // Visit Request
         View visitrequest = dialogView.findViewById(R.id.visitrequest);
@@ -1350,15 +1077,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 e.printStackTrace();
             }
         }
-//        List<String> activityRightsScreens = new ArrayList<>();
-//        for (Map<String, String> right : activityRights) {
-//            String name = right.get("Name");
-//            String desc = right.get("Desc");
-//            String screenName = right.get("ScreenName");
-//
-//            Log.d("ActivityRight", "Name: " + name + ", Desc: " + desc + ", Screen: " + screenName);
-//            activityRightsScreens.add(name); // Important: Add screenName, not name
-//        }
 
         Log.d("ActivityRight", "Ids: " + activityRightIds.toString());
         View optionNewGrower = dialogView.findViewById(R.id.optionNewGrower);
@@ -1440,75 +1158,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
             fieldFollowUp.setVisibility(View.GONE);
         }
     }
-
-/*
- private void showAreaExtensionDialog() {
-     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-     LayoutInflater inflater = getLayoutInflater();
-     View dialogView = inflater.inflate(R.layout.dialog_area_extension, null);
-     builder.setView(dialogView);
-     AlertDialog dialog = builder.create();
-     dialog.show();
-     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-     // Handle clicks
-     dialogView.findViewById(R.id.optionNewGrower).setOnClickListener(v -> {
-                 resetPrevRegData();
-                 startActivity(new Intent(this, LocationSelectionScreen.class));
-                 dialog.dismiss();
-                 CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_NEW_FARMER;
-          */
-/*  Toast.makeText(this, "New Field New Grower", Toast.LENGTH_SHORT).show();
-             dialog.dismiss();*//*
-
-             }
-     );
-     dialogView.findViewById(R.id.optiondripfollowup).setOnClickListener(v -> {
-                 resetPrevRegData();
-
-                 CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_DripFOLLOWUP;
-                 startActivity(new Intent(this, SearchFarmerScreen.class));
-                 dialog.dismiss();
-          */
-/*  Toast.makeText(this, "New Field New Grower", Toast.LENGTH_SHORT).show();
-             dialog.dismiss();*//*
-
-             }
-     );
-
-
-     dialogView.findViewById(R.id.optionExistingGrower).setOnClickListener(v -> {
-         Toast.makeText(this, "New Field Existing Grower", Toast.LENGTH_SHORT).show();
-         resetPrevRegData();
-         CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_NEW_PLOT;
-         startActivity(new Intent(this, SearchFarmerScreen.class));
-         dialog.dismiss();
-     });
-
-     dialogView.findViewById(R.id.optionProspective).setOnClickListener(v -> {
-         resetPrevRegData();
-         CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_VPF;
-         Intent intent = new Intent(HomeScreen.this, SearchFarmerScreen.class);
-         startActivity(intent);
-         dialog.dismiss();
-     });
-
-     dialogView.findViewById(R.id.optionFollowUp).setOnClickListener(v -> {
-         resetPrevRegData();
-         CommonConstants.REGISTRATION_SCREEN_FROM = CommonConstants.REGISTRATION_SCREEN_FROM_FOLLOWUP;
-         startActivity(new Intent(this, SearchFarmerScreen.class));
-         dialog.dismiss();
-     });
-     final Intent alertsIntent = new Intent(this, AlertsDisplayScreen.class);
-
-     dialogView.findViewById(R.id.fieldFollowUp).setOnClickListener(v -> {
-         alertsIntent.putExtra(ALERT_TYPE, TYPE_PLOT_FOLLOWUP);
-         startActivity(alertsIntent);
-         dialog.dismiss();
-     });
- }
-
-*/
 
     //on Resume method
     @Override
@@ -1663,44 +1312,6 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         conversionRel.setVisibility(visibility);
         prospectiveFarmersRel.setVisibility(visibility);
     }
-
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.plots_display_screen, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()== R.id.english){
-            CommonUtils.changeLanguage(this, "en");
-            // UiUtils.showCustomToastMessage("You Selected English",CollectionCenterHomeScreen.this,1);
-        }
-
-        if (item.getItemId() == R.id.hindi){
-            CommonUtils.changeLanguage(this,"hi");
-
-        }
-        switch (item.getItemId()){
-
-            case R.id.english:
-                CommonUtils.changeLanguage(this, "en");
-                break;
-            case R.id.hindi:
-                CommonUtils.changeLanguage(this, "hi");
-                break;
-
-
-
-        }
-        Intent refreshIntent=new Intent(HomeScreen.this,HomeScreen.class);
-        finish();
-        startActivity(refreshIntent);
-
-       *//* Intent refresh = new Intent(this, CollectionCenterHomeScreen.class);
-        startActivity(refresh);//Start the same Activity*//*
-        return super.onOptionsItemSelected(item);
-    }*/
 
 }
 

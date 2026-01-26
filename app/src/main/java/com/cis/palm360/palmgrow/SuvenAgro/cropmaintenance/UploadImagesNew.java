@@ -691,7 +691,7 @@ public class UploadImagesNew extends OilPalmBaseActivity {
     }
 
     private File createImageFile3() {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "Palm_Pictures/" + "UploadedPassbookPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "Palm_Pictures/" + "UploadedPassbookPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }
@@ -701,7 +701,7 @@ public class UploadImagesNew extends OilPalmBaseActivity {
     }
 
     private File createImageFile2() {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "Palm_Pictures/" + "UploadedIDPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "Palm_Pictures/" + "UploadedIDPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }
@@ -745,7 +745,7 @@ public class UploadImagesNew extends OilPalmBaseActivity {
     }
 
     private File createImageFile() {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "Palm_Pictures/" + "UploadedFarmerPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "Palm_Pictures/" + "UploadedFarmerPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

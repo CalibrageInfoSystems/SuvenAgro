@@ -1674,9 +1674,9 @@ return "adae9483777370a8";
 
 
     //DB path
-    public static String get3FFileRootPath() {
+    public static String getFileRootPath() {
         String root = Environment.getExternalStorageDirectory().toString();
-        File rootDirectory = new File(root + "/EcoPalm_Files");
+        File rootDirectory = new File(root + "/Suven_Files");
         if (!rootDirectory.exists()) {
             rootDirectory.mkdirs();
         }
@@ -1691,54 +1691,6 @@ return "adae9483777370a8";
     public static int distanceToCompare(double plotSize) {
         Log.e("plotSize", "" + plotSize);
         int distanceToCompare = 35;
-//        if (plotSize <= 2 && plotSize >= 1) {
-//            distanceToCompare = 200;
-//        } else if (plotSize <= 3 && plotSize >= 2) {
-//            distanceToCompare = 200;
-//        } else if (plotSize <= 4 && plotSize >= 3) {
-//            distanceToCompare = 700;
-//        } else if (plotSize <= 5 && plotSize >= 4) {
-//            distanceToCompare = 1000;
-//        } else if (plotSize <= 6 && plotSize >= 5) {
-//            distanceToCompare = 1200;
-//        } else if (plotSize <= 7 && plotSize >= 6) {
-//            distanceToCompare = 1500;
-//        } else if (plotSize <= 8 && plotSize >= 7) {
-//            distanceToCompare = 1800;
-//        } else if (plotSize <= 9 && plotSize >= 8) {
-//            distanceToCompare = 2000;
-//        } else if (plotSize <= 10 && plotSize >= 9) {
-//            distanceToCompare = 2500;
-//        }
-//
-//        if (plotSize > 10) {
-//            distanceToCompare = 3000;
-//        }
-
-//        if (plotSize <= 2 && plotSize >= 1) {
-//            distanceToCompare = 20;
-//        } else if (plotSize <= 3 && plotSize >= 2) {
-//            distanceToCompare = 25;
-//        } else if (plotSize <= 4 && plotSize >= 3) {
-//            distanceToCompare = 30;
-//        } else if (plotSize <= 5 && plotSize >= 4) {
-//            distanceToCompare = 50;
-//        } else if (plotSize <= 6 && plotSize >= 5) {
-//            distanceToCompare = 100;
-//        } else if (plotSize <= 7 && plotSize >= 6) {
-//            distanceToCompare = 200;
-//        } else if (plotSize <= 8 && plotSize >= 7) {
-//            distanceToCompare = 300;
-//        } else if (plotSize <= 9 && plotSize >= 8) {
-//            distanceToCompare = 400;
-//        } else if (plotSize <= 10 && plotSize >= 9) {
-//            distanceToCompare = 400;
-//        }
-//
-//        if (plotSize > 10) {
-//            distanceToCompare=500;
-//        }
-
 
         if (plotSize <= 2 && plotSize >= 1) {
             distanceToCompare = 35;
@@ -1885,7 +1837,7 @@ return "adae9483777370a8";
 
     //to get the audio filepath
     public static String getAudioFilePath(final String fileName) {
-        File audioFile = new File(CommonUtils.get3FFileRootPath() + "/3F_Audio/" + "ComplaintsAudios" + "/" + fileName);
+        File audioFile = new File(CommonUtils.getFileRootPath() + "/3F_Audio/" + "ComplaintsAudios" + "/" + fileName);
         return audioFile.getAbsolutePath();
     }
 

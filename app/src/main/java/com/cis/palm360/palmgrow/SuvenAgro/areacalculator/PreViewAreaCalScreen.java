@@ -24,7 +24,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.common.CommonConstants;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataSavingHelper;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataManager;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.GeoBoundaries;
@@ -59,7 +59,7 @@ public class PreViewAreaCalScreen extends OilPalmBaseActivity {
     Plot plot = null;
     private AlertDialog alertDialog;
     public String UpdatedDate, UpdatedByUserId, ServerUpdatedStatus, Is_Active;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     LocationManager lm;
     int RESULT_OK = 222;
 
@@ -78,7 +78,7 @@ public class PreViewAreaCalScreen extends OilPalmBaseActivity {
 
         saveBtn = (Button) parentView.findViewById(R.id.land_save_btn);
         gpsStartBtn = (Button) parentView.findViewById(R.id.start_gps_btn);
-        palm3FoilDatabase = Palm3FoilDatabase.getPalm3FoilDatabase(this);
+        palmOilDatabase = PalmOilDatabase.getpalmOilDatabase(this);
         gpsStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +186,7 @@ public class PreViewAreaCalScreen extends OilPalmBaseActivity {
         ServerUpdatedStatus = CommonConstants.ServerUpdatedStatus;
         UpdatedByUserId = String.valueOf(Integer.parseInt(CommonConstants.USER_ID));
         Is_Active = "0";
-        palm3FoilDatabase.UpdateFarmerhistory(UpdatedByUserId, UpdatedDate, Is_Active);
+        palmOilDatabase.UpdateFarmerhistory(UpdatedByUserId, UpdatedDate, Is_Active);
         displayDialogWindow("GeoBoundaries are  saving in db", alertDialog, PreViewAreaCalScreen.this);
 
     }

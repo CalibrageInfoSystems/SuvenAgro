@@ -217,11 +217,11 @@ public class ConversionDigitalContractFragment extends BaseFragment implements O
             Log.d("digitalContracttt", "isnotnull");
             nocontract.setVisibility(View.GONE);
             contactlayout.setVisibility(View.VISIBLE);
-            rootDirectory = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_DigitalContract/");
+            rootDirectory = new File(CommonUtils.getFileRootPath() + "PalmGrow_DigitalContract/");
 //        Log.d("rootDirectory", rootDirectory+"");
 //        Log.d("filename", digitalContract.getFILENAME()+"");
 //        Log.d("fileextension",  digitalContract.getFileExtension()+"");
-            fileToDownLoad = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_DigitalContract/" + digitalContract.getFILENAME() + digitalContract.getFileExtension());
+            fileToDownLoad = new File(CommonUtils.getFileRootPath() + "PalmGrow_DigitalContract/" + digitalContract.getFILENAME() + digitalContract.getFileExtension());
 
             Log.d(" ", fileToDownLoad+"");
             // String strFileName = file.getName();
@@ -311,7 +311,7 @@ public class ConversionDigitalContractFragment extends BaseFragment implements O
         newpdfview =  dialog.findViewById(R.id.signedcontractpdfView);
         Button submitpdf = dialog.findViewById(R.id.signedcontractSaveBtn);
 
-  newrootDirectory = new File(CommonUtils.get3FFileRootPath() + "DigitalContract");
+  newrootDirectory = new File(CommonUtils.getFileRootPath() + "DigitalContract");
        // newrootDirectory = new File(getContext().getExternalFilesDir(null), "DigitalContract");
 
         // newfileToLoad = new File(newrootDirectory +"/"+ CommonConstants.FARMER_CODE + ".pdf");

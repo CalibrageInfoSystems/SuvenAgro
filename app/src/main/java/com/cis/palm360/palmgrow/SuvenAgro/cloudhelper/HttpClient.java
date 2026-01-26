@@ -5,7 +5,7 @@ import android.content.Context;
 import android.net.http.AndroidHttpClient;
 
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonConstants;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -151,7 +151,7 @@ public class HttpClient {
             return;
         }
         Log.i("Jurl...", url);
-        Palm3FoilDatabase  palm3FoilDatabase = Palm3FoilDatabase.getPalm3FoilDatabase(context);
+        PalmOilDatabase palmOilDatabase = PalmOilDatabase.getpalmOilDatabase(context);
         final AndroidHttpClient client = AndroidHttpClient.newInstance("Android");
         final HttpPost post = new org.apache.http.client.methods.HttpPost(url);
         try {
@@ -179,7 +179,7 @@ public class HttpClient {
                 } else {
                     final String postResponse = EntityUtils.toString(response.getEntity(), "UTF-8");
 
-                    palm3FoilDatabase.insertErrorLogs(CommonConstants.SyncTableName,postResponse);
+                    palmOilDatabase.insertErrorLogs(CommonConstants.SyncTableName,postResponse);
 //                    Log.pushLogToCrashlytics(url+"\n"+jsonObject.toString());
 //                    Log.pushLogToCrashlytics(postResponse);
 //                    Log.pushExceptionToCrashlytics(new OilPalmException(postResponse));

@@ -580,7 +580,7 @@ public class HealthOfPlantationDetailsFragment extends Fragment implements View.
     }
 
     private File createImageFile() throws IOException {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Pictures/" + "PlantationPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Pictures/" + "PlantationPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

@@ -20,7 +20,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.cloudhelper.Log;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonConstants;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataManager;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataSyncHelper;
@@ -80,7 +80,7 @@ public class MainLoginScreen extends AppCompatActivity {
 
         imeiNumberTxt.setText(CommonUtils.getIMEInumber(this));
         versionnumbertxt.setText(CommonUtils.getAppVersion(this));
-        dbVersionTxt.setText(""+ Palm3FoilDatabase.DATA_VERSION);
+        dbVersionTxt.setText(""+ PalmOilDatabase.DATA_VERSION);
 
         String query = Queries.getInstance().getUserDetailsNewQuery(CommonUtils.getIMEInumber(this));
 

@@ -288,7 +288,7 @@ public class PestDetailsFragment extends Fragment implements View.OnClickListene
         cropMaintenanceDocs = (CropMaintenanceDocs) dataAccessHandler.getCMDocsData(Queries.getInstance().getPestPDFfile(), 0);
 
         if (cropMaintenanceDocs != null) {
-            fileToDownLoad = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
+            fileToDownLoad = new File(CommonUtils.getFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
 
 
             if (null != fileToDownLoad && fileToDownLoad.exists()) {

@@ -8,7 +8,7 @@ import android.os.StrictMode;
 import com.cis.palm360.palmgrow.SuvenAgro.cloudhelper.ApplicationThread;
 import com.cis.palm360.palmgrow.SuvenAgro.cloudhelper.Config;
 
-public class Oil3FPalmMainApplication extends Application {
+public class OilPalmMainApplication extends Application {
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     @SuppressWarnings("unused")

@@ -739,14 +739,14 @@ Log.e("saveBtn","saveBtn");
     private File createFile(int fileType) throws IOException {
         File pictureDirectory;
         if (fileType == 0) {
-            pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Pictures/" + "ComplaintsPhotos");
+            pictureDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Pictures/" + "ComplaintsPhotos");
             if (!pictureDirectory.exists()) {
                 pictureDirectory.mkdirs();
             }
             File finalFile = new File(pictureDirectory, (secondImage) ? CommonConstants.COMPLAINT_CODE + "_1" + CommonConstants.JPEG_FILE_SUFFIX : CommonConstants.COMPLAINT_CODE + CommonConstants.JPEG_FILE_SUFFIX);
             return finalFile;
         } else {
-            pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Audio/" + "ComplaintsAudios");
+            pictureDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Audio/" + "ComplaintsAudios");
             if (!pictureDirectory.exists()) {
                 pictureDirectory.mkdirs();
 
@@ -1008,7 +1008,7 @@ Log.e("saveBtn","saveBtn");
 
                 int lengthOfFile = connection.getContentLength();
 
-                File audioDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Audio/ComplaintsAudios");
+                File audioDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Audio/ComplaintsAudios");
                 if (!audioDirectory.exists()) {
                     audioDirectory.mkdirs();
                 }

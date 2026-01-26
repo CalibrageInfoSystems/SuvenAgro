@@ -36,7 +36,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.cropmaintenance.HarvestingActivity;
 import com.cis.palm360.palmgrow.SuvenAgro.cropmaintenance.PlantationAudit;
 import com.cis.palm360.palmgrow.SuvenAgro.database.CCDataAccessHandler;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataManager;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.Address;
@@ -75,7 +75,7 @@ public class DisplayPlotsFragment extends DialogFragment implements FarmerPlotDe
     private LinearLayout ReTakeGeoTagLL;
     private static String latLong = "";
     public String UpdatedDate, UpdatedByUserId, ServerUpdatedStatus;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     private int IsRetakeGeoTagRequired = 0;
     public static String plotCode = "";
     LocationManager lm;
@@ -162,7 +162,7 @@ public class DisplayPlotsFragment extends DialogFragment implements FarmerPlotDe
         farmer = (BasicFarmerDetails) getArguments().getSerializable("basicFarmerDetails");
 
         ccDataAccessHandler = new CCDataAccessHandler(getActivity());
-        palm3FoilDatabase = Palm3FoilDatabase.getPalm3FoilDatabase(getActivity());
+        palmOilDatabase = PalmOilDatabase.getpalmOilDatabase(getActivity());
         rvplotlist = (RecyclerView) view.findViewById(R.id.lv_farmerplotdetails);
 
         currentLocationTxt = (TextView) view.findViewById(R.id.currentLocationTxt);
@@ -220,7 +220,7 @@ public class DisplayPlotsFragment extends DialogFragment implements FarmerPlotDe
         ServerUpdatedStatus = CommonConstants.ServerUpdatedStatus;
         UpdatedByUserId = String.valueOf(Integer.parseInt(CommonConstants.USER_ID));
 
-        palm3FoilDatabase.UpdateGeoTagLatLng(UpdatedByUserId, UpdatedDate, CurrentLatitude, CurrentLongitude);
+        palmOilDatabase.UpdateGeoTagLatLng(UpdatedByUserId, UpdatedDate, CurrentLatitude, CurrentLongitude);
 
     }
 

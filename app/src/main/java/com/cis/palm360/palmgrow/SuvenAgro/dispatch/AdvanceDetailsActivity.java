@@ -40,7 +40,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.common.FiscalDate;
 import com.cis.palm360.palmgrow.SuvenAgro.cropmaintenance.CommonUtilsNavigation;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataManager;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.FarmersDataforImageUploading;
@@ -76,7 +76,7 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
     String navfrom;
     ArrayList<PlotAuditDetails> plotAuditDetailsData;
     private DataAccessHandler dataAccessHandler;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     TextView fieldCode, growerCode, growerName, fieldVillage;
     String fullname = "", middleName = "";
     Button addBtn;
@@ -188,52 +188,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
     private float safeFloat(Float value) {
         return value != null ? value : 0f;
     }
-//
-//    private void editAdvanceDetailsCalculations() {
-//        try {
-//            // Safe input parsing
-//            int importedCount = safeParseInt(imported_saplings);
-//            int indigenousCount = safeParseInt(indigenous_saplings);
-//
-//            float importedPrice = safeParseFloat(imported_saplings_price);
-//            float indigenousPrice = safeParseFloat(indigenous_saplings_price);
-//
-//            float farmerContribImported = safeParseFloat(grower_imported_price);
-//            float farmerContribIndigenous = safeParseFloat(grower_indigenous_price);
-//
-//            float totalSaplingsPrice = (importedCount * importedPrice) + (indigenousCount * indigenousPrice);
-//            total_saplings_price.setText(String.format(Locale.US, "%.2f", totalSaplingsPrice));
-//
-//            float farmerContributionReceived = (importedCount * farmerContribImported) + (indigenousCount * farmerContribIndigenous);
-//            grower_contribution_received.setText(String.format(Locale.US, "%.2f", farmerContributionReceived));
-//
-//            float subsidyPriceImported = importedPrice - farmerContribImported;
-//            float subsidyPriceIndigenous = indigenousPrice - farmerContribIndigenous;
-//            subsidy_price_imported.setText(String.format(Locale.US, "%.2f", subsidyPriceImported));
-//            subsidy_price_indigenous.setText(String.format(Locale.US, "%.2f", subsidyPriceIndigenous));
-//
-//            float saplingsSubsidyPrice = (importedCount * subsidyPriceImported) + (indigenousCount * subsidyPriceIndigenous);
-//            sapling_subsidy_price.setText(String.format(Locale.US, "%.2f", saplingsSubsidyPrice));
-//
-//            // Transport costs (Assuming these are floats already assigned somewhere)
-//            float totalImportedTransport = etTotalImportedTransportationCost;
-//            float importedFarmerTransport = etImportedFarmerContributionTransportationCost;
-//            float totalIndigenousTransport = etTotalIndigenousTransportationCost;
-//            float indigenousFarmerTransport = etIndigenousFarmerContributionTransportationCost;
-//
-//            float subsidyTransportCost = (importedCount * totalImportedTransport) + (indigenousCount * totalIndigenousTransport);
-//            float farmerTransportCost = (importedCount * importedFarmerTransport) + (indigenousCount * indigenousFarmerTransport);
-//            float totalTransportCost = subsidyTransportCost + farmerTransportCost;
-//
-//            subsidy_transportation_cost.setText(String.format(Locale.US, "%.2f", subsidyTransportCost));
-//            grower_contribution_transportation.setText(String.format(Locale.US, "%.2f", farmerTransportCost));
-//            total_transportation_cost.setText(String.format(Locale.US, "%.2f", totalTransportCost));
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            //Toast.makeText(this, "Calculation error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-//    }
     private int safeParseInt(EditText editText) {
         try {
             String value = editText.getText().toString().trim();
@@ -281,7 +235,7 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
         dataAccessHandler = new DataAccessHandler(AdvanceDetailsActivity.this);
-        palm3FoilDatabase = new Palm3FoilDatabase(this);
+        palmOilDatabase = new PalmOilDatabase(this);
         initView();
         setViews();
         bindData();
@@ -641,41 +595,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        advance_received_area.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                try {
-//                    String areaStr = s.toString().trim();
-//                    String selectedPlantation = plantation.getSelectedItem().toString();
-//                    if (!areaStr.isEmpty() && !selectedPlantation.equalsIgnoreCase("Select Type of Plantation")) {
-//                        double area = Double.parseDouble(areaStr);
-//
-//                        // Get plantationMethodId from map
-//                        String plantationId = CommonUtils.getKeyFromValue(PlantaionMethodMap, selectedPlantation);
-//                        double saplingCountPerAcre = dataAccessHandler.getSaplingCount(plantationId);
-//
-//                        int totalSaplings = (int) Math.round(area * saplingCountPerAcre);  // Rounded value
-//                        saplings_advance_paid.setText(String.valueOf(totalSaplings));
-//                        Log.e("====>totalSaplings", "" + totalSaplings);
-//                    } else {
-//                        saplings_advance_paid.setText("");
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//        });
-
-
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -939,11 +858,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
             return false;
         }
 
-//        if (advance_received_date.getText().toString().trim().isEmpty()) {
-//            //advance_received_date.setError("Advance Received Date is required");
-//            UiUtils.showCustomToastMessage("Advance Received Date is required", this, 0);
-//            return false;
-//        }
 
         if (payment.getSelectedItemPosition() == 0) {
             UiUtils.showCustomToastMessage("Select Mode of Payment", this, 1);
@@ -1092,13 +1006,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
         }
         bindAdvanceDetails();
 
-//        setRedStarLabel(surveyNumberLabel, "Survey Number ");
-//        setRedStarLabel(expMonthLabel, "Exp. Month of Planting ");
-//        setRedStarLabel(advanceDateLabel, "Advance Received Date ");
-//        setRedStarLabel(modeOfPaymentLabel, "Mode of Payment ");
-//        setRedStarLabel(typePlantationLabel, "Type of Plantation ");
-//        setRedStarLabel(areaLabel, "Advance Received Area ");
-
 // Advance Received Date Picker
         advance_received_date.setOnClickListener(v -> {
             final Calendar calendar = Calendar.getInstance();
@@ -1146,43 +1053,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
 
             datePickerDialog.show();
         });
-
-// Add to both EditTexts
-
-        // Month Picker Dialog
-//        month_of_planting.setOnClickListener(v -> {
-//            // First, show Year Picker
-//            final Calendar calendar = Calendar.getInstance();
-//            int currentYear = calendar.get(Calendar.YEAR);
-//
-//            // Create list of years (e.g., from 2000 to 2050)
-//            final String[] years = new String[51];
-//            for (int i = 0; i <= 50; i++) {
-//                years[i] = String.valueOf(2025 + i);
-//            }
-//
-//            new AlertDialog.Builder(AdvanceDetailsActivity.this)
-//                    .setTitle("Select Year")
-//                    .setItems(years, (yearDialog, yearIndex) -> {
-//                        String selectedYear = years[yearIndex];
-//
-//                        // Now show Month Picker
-//                        final String[] months = new DateFormatSymbols().getMonths();
-//                        String[] actualMonths = new String[12];
-//                        System.arraycopy(months, 0, actualMonths, 0, 12);
-//
-//                        new AlertDialog.Builder(AdvanceDetailsActivity.this)
-//                                .setTitle("Select Month")
-//                                .setItems(actualMonths, (monthDialog, monthIndex) -> {
-//                                    String selectedMonth = actualMonths[monthIndex];
-//                                    String displayText = selectedMonth + "-" + selectedYear;
-//                                    month_of_planting.setText(displayText); // Example: May-2025
-//                                    month_of_planting.setError(null);
-//                                })
-//                                .show();
-//                    })
-//                    .show();
-//        });
 
         month_of_planting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1281,70 +1151,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
         }
     }
 
-//    private void bindAdvanceDetails() {
-//        dataAccessHandler = new DataAccessHandler(this);
-//
-//        Integer stateID = dataAccessHandler.getOnlyOneIntValueFromDb(Queries.getInstance().getStateIdForPlotCode(CommonConstants.PLOT_CODE));
-//        Integer ZoneID = dataAccessHandler.getOnlyOneIntValueFromDb(Queries.getInstance().getZoneIdForPlotCode(CommonConstants.PLOT_CODE));
-//        if (ZoneID == null || stateID == null) {
-////            UiUtils.showCustomToastMessage("Please Do Master Sync", AdvanceDetailsActivity.this, 1);
-//            showWarningDialog("Warning", "Please Do Master Sync");
-//            return;
-//        }
-//
-////        int ZoneID  = 16; //dataAccessHandler.getOnlyOneIntValueFromDb(Queries.getInstance().getZoneIdForPlotCode(CommonConstants.PLOT_CODE));
-//        Log.e("getStateIdForPlotCode", "" + stateID + " " + ZoneID); //TODO
-//        String query = "SELECT * FROM AdvanceMst WHERE TypeOfLifting = 578 AND StateId = " + stateID + " AND ZoneId = " + ZoneID + " AND SourceOfSaplings = 55 ORDER BY SourceOfSaplings";
-//        String query2 = "SELECT * FROM AdvanceMst WHERE TypeOfLifting = 578 AND StateId = " + stateID + " AND ZoneId = " + ZoneID + " AND SourceOfSaplings = 56 ORDER BY SourceOfSaplings";
-//        String ReceiptNumber = dataAccessHandler.getGenerateReceiptNumber(
-//                Queries.getInstance().getMaxNumberQueryForReceiptNumber(financalSubStringYear + days), financalSubStringYear + days);
-//        android.util.Log.e("====>ReceiptNumberADV", "" + ReceiptNumber);
-//
-//
-//        Log.e("====>", "ReceiptNumber -->" + ReceiptNumber);
-//        List<AdvanceMst> list = dataAccessHandler.getAdvanceMstData(query);
-//
-//        for (AdvanceMst item : list) {
-//            Log.d("AdvanceDetails", "Printing Row Data:");
-//            Log.d("AdvanceDetails", "SourceOfSaplings: " + item.getSourceOfSaplings());
-//            Log.d("AdvanceDetails", "TotalSaplingsPrice: " + item.getTotalSaplingsPrice());
-//            Log.d("AdvanceDetails", "FarmerContributionReceived: " + item.getFarmerContributionReceived());
-//            Log.d("AdvanceDetails", "SubsidyPrice: " + item.getSubsidyPrice());
-//            Log.d("AdvanceDetails", "TransportationCost: " + item.getTotalTransportationCost());
-//            Log.d("AdvanceDetails", "Farmer Transport Cost: " + item.getFarmerContributionTransportationCost());
-//            Log.d("AdvanceDetails", "Subsidy Transport Cost: " + item.getSubsidyTransportationCost());
-//
-//            imported_saplings_price.setText(String.format(Locale.US, "%.2f", item.getTotalSaplingsPrice()));
-//            subsidy_price_imported.setText(String.format(Locale.US, "%.2f", item.getSubsidyPrice()));
-//            grower_imported_price.setText(String.format(Locale.US, "%.2f", item.getFarmerContributionReceived()));
-//
-//            etTotalImportedTransportationCost = item.getTotalTransportationCost();
-//            etImportedFarmerContributionTransportationCost = item.getFarmerContributionTransportationCost();
-//
-//
-//        }
-//
-//        List<AdvanceMst> list2 = dataAccessHandler.getAdvanceMstData(query2);
-//
-//        for (AdvanceMst item2 : list2) {
-//            Log.d("AdvanceDetails", "Printing Row Data:");
-//            Log.d("AdvanceDetails", "SourceOfSaplings: " + item2.getSourceOfSaplings());
-//            Log.d("AdvanceDetails", "TotalSaplingsPrice: " + item2.getTotalSaplingsPrice());
-//            Log.d("AdvanceDetails", "FarmerContributionReceived: " + item2.getFarmerContributionReceived());
-//            Log.d("AdvanceDetails", "SubsidyPrice: " + item2.getSubsidyPrice());
-//            Log.d("AdvanceDetails", "TransportationCost: " + item2.getTotalTransportationCost());
-//            Log.d("AdvanceDetails", "Farmer Transport Cost: " + item2.getFarmerContributionTransportationCost());
-//            Log.d("AdvanceDetails", "Subsidy Transport Cost: " + item2.getSubsidyTransportationCost());
-//
-//            indigenous_saplings_price.setText(String.format(Locale.US, "%.2f", item2.getTotalSaplingsPrice()));
-//            subsidy_price_indigenous.setText(String.format(Locale.US, "%.2f", item2.getSubsidyPrice()));
-//            grower_indigenous_price.setText(String.format(Locale.US, "%.2f", item2.getFarmerContributionReceived()));
-//
-//            etTotalIndigenousTransportationCost = item2.getTotalTransportationCost();
-//            etIndigenousFarmerContributionTransportationCost = item2.getFarmerContributionTransportationCost();
-//        }
-//    }
-
     public void showWarningDialog(String title, String message) {
         final Dialog dialog = new Dialog(AdvanceDetailsActivity.this);
         dialog.setContentView(R.layout.custom_alert_dailog);
@@ -1374,27 +1180,6 @@ public class AdvanceDetailsActivity extends AppCompatActivity {
 
         dialog.show();
     }
-
-/*    public void showDialog(String title, String message) {
-        final Dialog dialog = new Dialog(AdvanceDetailsActivity.this);
-        dialog.setContentView(R.layout.custom_alert_dailog);
-
-        TextView dialogTitle = dialog.findViewById(R.id.dialogTitle);
-        LinearLayout btnContainer = dialog.findViewById(R.id.btnContainer);
-        LinearLayout okBtnContainer = dialog.findViewById(R.id.okBtnContainer);
-//        ImageView dialogIcon = dialog.findViewById(R.id.dialogIcon);
-        Button okBtn = dialog.findViewById(R.id.okBtn);
-        TextView msg = dialog.findViewById(R.id.test);
-        btnContainer.setVisibility(View.GONE);
-        okBtnContainer.setVisibility(View.VISIBLE);
-        dialogTitle.setText("Warning");
-        msg.setText("Please Do Master Sync");
-        okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {  }
-        });
-        dialog.show();
-    }*/
 
 
     @Override

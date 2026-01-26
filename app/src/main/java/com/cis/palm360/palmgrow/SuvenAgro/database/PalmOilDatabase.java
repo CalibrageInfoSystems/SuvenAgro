@@ -23,16 +23,16 @@ import java.sql.SQLException;
  */
 
 //Database creation, copying will be done
-public class Palm3FoilDatabase extends SQLiteOpenHelper {
+public class PalmOilDatabase extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = Palm3FoilDatabase.class.getName();
+    public static final String LOG_TAG = PalmOilDatabase.class.getName();
     //public final static int DATA_VERSION = 37; // Changed on 12th Nov 2024
     //public final static int DATA_VERSION = 38; // Changed on 20-05-2025
     public final static int DATA_VERSION = 1; // Changed on 20-05-2025
     private final static String DATABASE_NAME = "palmgrow.sqlite";
     public static final String Lock = "dblock";
 
-    private static Palm3FoilDatabase palm3FoilDatabase;
+    private static PalmOilDatabase palmOilDatabase;
     private static SQLiteDatabase mSqLiteDatabase = null;
     private static String DB_PATH;
     private static String FULL_DB_PATH;
@@ -40,11 +40,11 @@ public class Palm3FoilDatabase extends SQLiteOpenHelper {
     private final Context mContext;
 
 
-    public Palm3FoilDatabase(Context context) {
+    public PalmOilDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATA_VERSION);
         this.mContext = context;
 
-        File dbDirectory = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_Database");
+        File dbDirectory = new File(CommonUtils.getFileRootPath() + "PalmGrow_Database");
         if (!dbDirectory.exists()) {
             boolean created = dbDirectory.mkdirs();
             Log.d(LOG_TAG, "DB directory created: " + created);
@@ -56,12 +56,12 @@ public class Palm3FoilDatabase extends SQLiteOpenHelper {
         Log.v("The Database Path", FULL_DB_PATH);
     }
 
-    public static synchronized Palm3FoilDatabase getPalm3FoilDatabase(Context context) {
+    public static synchronized PalmOilDatabase getpalmOilDatabase(Context context) {
         synchronized (Lock) {
-            if (palm3FoilDatabase == null) {
-                palm3FoilDatabase = new Palm3FoilDatabase(context);
+            if (palmOilDatabase == null) {
+                palmOilDatabase = new PalmOilDatabase(context);
             }
-            return palm3FoilDatabase;
+            return palmOilDatabase;
         }
     }
 

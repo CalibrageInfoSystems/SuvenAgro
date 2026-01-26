@@ -2825,7 +2825,7 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
 
 
     public String copyPdfToAppStorage(Uri pdfUri) {
-        File directory = new File( CommonUtils.get3FFileRootPath() + "UploadedPDFs");
+        File directory = new File( CommonUtils.getFileRootPath() + "UploadedPDFs");
         if (!directory.exists()) directory.mkdirs();
 
         String fileName = getFileNameFromUri(pdfUri);
@@ -2876,7 +2876,7 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             Log.e("SaveBitmap", "Bitmap is null, not saving");
             return null;
         }
-        File dir = new File(CommonUtils.get3FFileRootPath() + "PalmGrow/Drip_Images");
+        File dir = new File(CommonUtils.getFileRootPath() + "PalmGrow/Drip_Images");
 
      //   File dir = new File(Environment.getExternalStorageDirectory(), "PalmGrow/Drip_Images");
         if (!dir.exists()) dir.mkdirs();

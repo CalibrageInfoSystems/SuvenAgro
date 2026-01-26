@@ -904,7 +904,7 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
     public File getDbFileToUpload() {
         try {
 //            File dir = Environment.getExternalStorageDirectory();
-            File dbFileToUpload = new File("/sdcard/EcoPalm_Files/PalmGrow_Database/palmgrow.sqlite");
+            File dbFileToUpload = new File("/sdcard/Suven_Files/PalmGrow_Database/palmgrow.sqlite");
             return dbFileToUpload;
         } catch (Exception e) {
             android.util.Log.w("Settings Backup", e);
@@ -1145,7 +1145,6 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
             int stateid = digitalList.get(i).getStateId();
             Log.e("========>156", stateid + "");
             // fileExtention =digitalContract.getFileExtension();
-            // rootDirectory = new File(CommonUtils.get3FFileRootPath() + "3F_DigitalContract/");
             digitalContract = (DigitalContract) dataAccessHandler.getDigitalContractData(Queries.getInstance().getDigitalContractbystatecode(stateid), 0);
             String url = Config.image_url + "/" + digitalContract.getFileLocation() + "/" + digitalContract.getFILENAME() + digitalContract.getFileExtension();
             Log.e("========>171url", url + "");
@@ -1163,7 +1162,6 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
             int sectionId = cmdocsList.get(i).getCMSectionId();
             Log.e("sectionId", sectionId + "");
             // fileExtention =digitalContract.getFileExtension();
-            // rootDirectory = new File(CommonUtils.get3FFileRootPath() + "3F_DigitalContract/");
             cropMaintenanceDocs = (CropMaintenanceDocs) dataAccessHandler.getCMDocsData(Queries.getInstance().getCMDocsbysectionId(sectionId), 0);
             String cmdocurl = Config.image_url + "/" + cropMaintenanceDocs.getFileLocation() + "/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension();
             Log.e("cmdocurlurl", cmdocurl + "");
@@ -1197,7 +1195,7 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
 
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
-                String rootDirectory = CommonUtils.get3FFileRootPath() + "PalmGrow_DigitalContract/";
+                String rootDirectory = CommonUtils.getFileRootPath() + "PalmGrow_DigitalContract/";
                 File directory = new File(rootDirectory);
                 if (!directory.exists()) {
                     directory.mkdirs();
@@ -1225,7 +1223,7 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
         @Override
         protected void onPostExecute(String file_url) {
             if (downloadSuccess) {
-                File fileToDownload = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_DigitalContract/" + filename + fileExtension);
+                File fileToDownload = new File(CommonUtils.getFileRootPath() + "PalmGrow_DigitalContract/" + filename + fileExtension);
                 Log.d("File Path:", fileToDownload.getAbsolutePath());
                 if (fileToDownload.exists()) {
                     Log.d("File Path:", fileToDownload.getAbsolutePath());
@@ -1263,7 +1261,7 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
 
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
-                String rootDirectory = CommonUtils.get3FFileRootPath() + "PalmGrow_CMDocs/";
+                String rootDirectory = CommonUtils.getFileRootPath() + "PalmGrow_CMDocs/";
                 File directory = new File(rootDirectory);
                 if (!directory.exists()) {
                     directory.mkdirs();
@@ -1291,7 +1289,7 @@ public class RefreshSyncActivity extends AppCompatActivity implements View.OnCli
         @Override
         protected void onPostExecute(String file_url) {
             if (downloadSuccess) {
-                File fileToDownload = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_CMDocs/" + filename + fileExtension);
+                File fileToDownload = new File(CommonUtils.getFileRootPath() + "PalmGrow_CMDocs/" + filename + fileExtension);
                 Log.d("File Path:", fileToDownload.getAbsolutePath());
                 if (fileToDownload.exists()) {
                     Log.d("File Path:", fileToDownload.getAbsolutePath());

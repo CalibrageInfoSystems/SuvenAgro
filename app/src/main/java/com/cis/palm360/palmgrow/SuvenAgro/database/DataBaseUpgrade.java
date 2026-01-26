@@ -27,16 +27,16 @@ class DataBaseUpgrade {
                 upgradeDb1(db);
 
             } else {
-                boolean isDbUpgradeFinished = sharedPreferences.getBoolean(String.valueOf(Palm3FoilDatabase.DATA_VERSION), false);
+                boolean isDbUpgradeFinished = sharedPreferences.getBoolean(String.valueOf(PalmOilDatabase.DATA_VERSION), false);
                 Log.v(LOG_TAG, "@@@@ database....." + isDbUpgradeFinished);
                 if (!isDbUpgradeFinished) {
-                    switch (Palm3FoilDatabase.DATA_VERSION) {
+                    switch (PalmOilDatabase.DATA_VERSION) {
                         case 1:
                             upgradeDb1(db);
                             break;
                     }
                 } else {
-                    Log.v(LOG_TAG, "@@@@ database is already upgraded " + Palm3FoilDatabase.DATA_VERSION);
+                    Log.v(LOG_TAG, "@@@@ database is already upgraded " + PalmOilDatabase.DATA_VERSION);
                 }
             }
 
@@ -45,18 +45,18 @@ class DataBaseUpgrade {
             result = false;
         } finally {
             if (result) {
-                Log.v(LOG_TAG, "@@@@ database is upgraded " + Palm3FoilDatabase.DATA_VERSION);
+                Log.v(LOG_TAG, "@@@@ database is upgraded " + PalmOilDatabase.DATA_VERSION);
             } else {
                 Log.e(LOG_TAG, "@@@@ database is upgrade failed or already upgraded");
             }
             sharedPreferences.edit().putBoolean(CommonConstants.IS_FRESH_INSTALL, false).apply();
-            sharedPreferences.edit().putBoolean(String.valueOf(Palm3FoilDatabase.DATA_VERSION), true).apply();
+            sharedPreferences.edit().putBoolean(String.valueOf(PalmOilDatabase.DATA_VERSION), true).apply();
         }
     }
 
 
     public static void upgradeDb1(final SQLiteDatabase db) {
-        Log.d(LOG_TAG, "******* upgradeDataBase " + Palm3FoilDatabase.DATA_VERSION);
+        Log.d(LOG_TAG, "******* upgradeDataBase " + PalmOilDatabase.DATA_VERSION);
 
         String alterGeoBoundariesTable1 = "ALTER TABLE GeoBoundaries ADD COLUMN CropMaintenanceCode VARCHAR (60)";
 
@@ -1348,38 +1348,7 @@ class DataBaseUpgrade {
 
         String plotGapFillingDetails = "DROP TABLE PlotGapFillingDetails";
         db.execSQL(plotGapFillingDetails);
-//
-//        {
-//            "Id": 1334,
-//                "PlotCode": "APAB0001000010",
-//                "SaplingsToBeIssued": 6,
-//                "ImportedSaplingsToBeIssued": 3,
-//                "IndigenousSaplingsToBeIssued": 3,
-//                "ExpectedDateofPickup": "2023-11-17T00:00:00",
-//                "GapFillingReasonTypeId": 176,
-//                "IsApproved": true,
-//                "IsDeclined": null,
-//                "Comments": "by firefox",
-//                "IsActive": true,
-//                "FileName": "20231117010352748",
-//                "FileLocation": "2023\\11\\17\\GapFilling",
-//                "FileExtension": ".pdf",
-//                "CreatedByUserId": 397,
-//                "CreatedDate": "2023-11-17T13:03:18.957",
-//                "UpdatedByUserId": 397,
-//                "UpdatedDate": "2023-11-17T13:05:22.23",
-//                "ApprovedByUserId": 397,
-//                "ApprovedDate": "2023-11-17T13:05:22.23",
-//                "DeclinedByUserID": null,
-//                "DeclinedDate": null,
-//                "ASHApprovedComments": "Adv state app by n ",
-//                "DeclinedComments": null,
-//                "IsVerified": true,
-//                "GapFillingStatusTypeId": 664,
-//                "SHApprovedComments": "State App by n",
-//                "ServerUpdatedStatus": false,
-//                "CMApprovedComments": "cluster app by n"
-//        },
+
         String newPlotGapFillingDetails = "CREATE TABLE PlotGapFillingDetails(\n" +
                 "Id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "PlotCode TEXT NOT NULL,\n" +

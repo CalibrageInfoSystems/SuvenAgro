@@ -120,128 +120,10 @@ public class AdvanceDetailsListActivity extends AppCompatActivity implements Adv
                 startActivityForResult(nav, 101); // Use a request code
                 DataManager.getInstance().deleteData(DataManager.ADVANCE_DETAILS_UPDATE);
             }
-//            if (getPendingSaplingsCount > 0) {
-//                UiUtils.showCustomToastMessage("You Have Pending Saplings To be Dispatched", AdvanceDetailsListActivity.this, 0);
-//
-//                if (ZoneID == null || stateID == null) {
-//                    UiUtils.showCustomToastMessage("Zone Data Not Available. Please Do Master Sync", AdvanceDetailsListActivity.this, 0);
-//                } else {
-//                    Intent nav = new Intent(AdvanceDetailsListActivity.this, AdvanceDetailsActivity.class);
-//                    nav.putExtra("isFromUpdate", "notfromUpdate");
-//                    startActivityForResult(nav, 101); // Use a request code
-//                    DataManager.getInstance().deleteData(DataManager.ADVANCE_DETAILS_UPDATE);
-//                }
-//            }
-//            else {
-//
-//                if (ZoneID == null || stateID == null) {
-//                    UiUtils.showCustomToastMessage("Zone Data Not Available. Please Do Master Sync", AdvanceDetailsListActivity.this, 0);
-//                } else {
-//                    Intent nav = new Intent(AdvanceDetailsListActivity.this, AdvanceDetailsActivity.class);
-//                    nav.putExtra("isFromUpdate", "notfromUpdate");
-//                    startActivityForResult(nav, 101); // Use a request code
-//                    DataManager.getInstance().deleteData(DataManager.ADVANCE_DETAILS_UPDATE);
-//                }
-//            }
 
         });
 
     }
-
-
-/*    private void startPdfDownload() {
-
-        JsonObject object = PlantationRequest();
-        ApiService service = ServiceFactory.createRetrofitService(this, ApiService.class);
-        mSubscription = service.plantationPdf(object)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<PlantationPdf>() {
-
-                    @Override
-                    public void onSubscribe(Subscription s) {
-                        s.request(Long.MAX_VALUE);
-                    }
-
-                    @Override
-                    public void onNext(PlantationPdf plantationPdf) {
-
-                        // This Base64 string should come from your API
-                        String sampleBase64Pdf = "JVBERi0xLjQKMSAwIG9iago8PC9UeXBlIC9DYXRhbG9nCi9QYWdlcyAyIDAgUgo+PgplbmRvYmoK"
-                                + "MiAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lkcyBbMyAwIFJdCi9Db3VudCAxCj4+CmVuZG9iagoz"
-                                + "IDAgb2JqCjw8L1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA1OTUgODQy"
-                                + "XQovQ29udGVudHMgNSAwIFIKL1Jlc291cmNlcyA8PC9Qcm9jU2V0IFsvUERGIC9UZXh0XQovRm9u"
-                                + "dCA8PC9GMSA0IDAgUj4+Cj4+Cj4+CmVuZG9iago0IDAgb2JqCjw8L1R5cGUgL0ZvbnQKL1N1YnR5"
-                                + "cGUgL1R5cGUxCi9OYW1lIC9GMQovQmFzZUZvbnQgL0hlbHZldGljYQovRW5jb2RpbmcgL01hY1Jv"
-                                + "bWFuRW5jb2RpbmcKPj4KZW5kb2JqCjUgMCBvYmoKPDwvTGVuZ3RoIDUzCj4+CnN0cmVhbQpCVAov"
-                                + "RjEgMjAgVGYKMjIwIDQwMCBUZAooRHVtbXkgUERGKSBUagpFVAplbmRzdHJlYW0KZW5kb2JqCnhy"
-                                + "ZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZgowMDAwMDAwMDA5IDAwMDAwIG4KMDAwMDAwMDA2MyAw"
-                                + "MDAwMCBuCjAwMDAwMDAxMjQgMDAwMDAgbgowMDAwMDAwMjc3IDAwMDAwIG4KMDAwMDAwMDM5MiAw"
-                                + "MDAwMCBuCnRyYWlsZXIKPDwvU2l6ZSA2Ci9Sb290IDEgMCBSCj4+CnN0YXJ0eHJlZgo0OTUKJSVF"
-                                + "T0YK";
-
-                        try {
-                            // 1. Decode the Base64 string into bytes
-                            byte[] pdfBytes = Base64.decode(sampleBase64Pdf, Base64.DEFAULT);
-
-                            // 2. Create directory where file will be saved
-
-                            String rootPath = CommonUtils.get3FFileRootPath() + "PlantationDDReceipt/";
-                            File directory = new File(rootPath);
-                            if (!directory.exists()) {
-                                boolean created = directory.mkdirs();
-                                Log.d(TAG, "Directory created: " + created);
-                            }
-
-//            String rootPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/SmartGeoTrack/PalmGrow_DigitalContract/";
-//            File directory = new File(rootPath);
-//            if (!directory.exists()) {
-//                boolean created = directory.mkdirs();
-//                Log.d(TAG, "Directory created: " + created);
-//            }
-
-                            // 3. Create the file
-                            File pdfFile = new File(directory, CommonConstants.PLOT_CODE + "_DDReceipt.pdf");
-
-                            // 4. Write bytes to the file
-                            FileOutputStream fos = new FileOutputStream(pdfFile);
-                            fos.write(pdfBytes);
-                            fos.flush();
-                            fos.close();
-
-                            // 5. Show confirmation
-                            if (pdfFile.exists()) {
-                                UiUtils.showCustomToastMessage("PDF Saved Successfully ", AdvanceDetailsListActivity.this, 0);
-                                Toast.makeText(AdvanceDetailsListActivity.this, "PDF saved at: " + pdfFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                                Log.d(TAG, "PDF saved at: " + pdfFile.getAbsolutePath());
-                            } else {
-                                UiUtils.showCustomToastMessage("Failed to save PDF", AdvanceDetailsListActivity.this, 1);
-                                Toast.makeText(AdvanceDetailsListActivity.this, "Failed to save PDF", Toast.LENGTH_LONG).show();
-                                Log.e(TAG, "PDF file not found after saving!");
-                            }
-
-                        } catch (IOException e) {
-                            Log.e(TAG, "Error writing PDF file", e);
-                            UiUtils.showCustomToastMessage( "Error: " + e.getMessage(), AdvanceDetailsListActivity.this, 1);
-                            Toast.makeText(AdvanceDetailsListActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        Log.e(TAG, "PDF download error", t);
-                        UiUtils.showCustomToastMessage("Error downloading PDF: " + t.getMessage(), AdvanceDetailsListActivity.this, 1);
-                        Toast.makeText(AdvanceDetailsListActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "PDF download completed");
-                    }
-
-                });
-    }*/
 
     private void startPdfDownload() {
         // Create request object
@@ -314,7 +196,7 @@ public class AdvanceDetailsListActivity extends AppCompatActivity implements Adv
 
             // 2. Create directory where file will be saved
 
-            String rootPath = CommonUtils.get3FFileRootPath() + "PlantationDDReceipt/";
+            String rootPath = CommonUtils.getFileRootPath() + "PlantationDDReceipt/";
             File directory = new File(rootPath);
             if (!directory.exists()) {
                 boolean created = directory.mkdirs();

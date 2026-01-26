@@ -224,7 +224,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="If 3FOP resolves this issue will you supply to 3FOP?"
+                        android:text="If Oil Palm resolves this issue will you supply to Oil Palm?"
                         android:id="@+id/ofRadQues"/>
                     <RadioGroup
                         android:layout_width="match_parent"

@@ -676,7 +676,7 @@ public class ConversionPlantationFragment extends BaseFragment implements View.O
     }
 
     private File createImageFile() {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "Palm_Pictures/" + "ConversionPlantaionPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "Palm_Pictures/" + "ConversionPlantaionPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

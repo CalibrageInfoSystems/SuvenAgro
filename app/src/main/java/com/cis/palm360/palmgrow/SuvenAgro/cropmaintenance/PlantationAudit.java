@@ -25,7 +25,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.common.CommonConstants;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DatabaseKeys;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.FarmersDataforImageUploading;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.PlantationAuditOptionsModel;
@@ -41,7 +41,7 @@ import java.util.List;
 public class PlantationAudit extends OilPalmBaseActivity {
 
     private DataAccessHandler dataAccessHandler;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
 
     ArrayList<FarmersDataforImageUploading> farmersdata;
 
@@ -61,7 +61,7 @@ public class PlantationAudit extends OilPalmBaseActivity {
         View parentView = inflater.inflate(R.layout.activity_plantation_audit, null);
         baseLayout.addView(parentView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         dataAccessHandler = new DataAccessHandler(PlantationAudit.this);
-        palm3FoilDatabase = new Palm3FoilDatabase(this);
+        palmOilDatabase = new PalmOilDatabase(this);
         initView();
         setViews();
         setTile("Plantation Audit Screen");

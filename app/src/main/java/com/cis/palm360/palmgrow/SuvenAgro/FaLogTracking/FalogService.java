@@ -31,7 +31,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.cloudhelper.ApplicationThread;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonConstants;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.datasync.helpers.DataSyncHelper;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.UserDetails;
@@ -57,7 +57,7 @@ public class FalogService extends Service implements LocationListener {
     PowerManager.WakeLock wakeLock;
     public Context context;
     double latitude, longitude;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     private static final int MIN_UPDATE_TIME = 0;
     private static final int MIN_UPDATE_DISTANCE = 100;
     private Location location;
@@ -81,7 +81,7 @@ public class FalogService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         super.onCreate();
-//        palm3FoilDatabase = new Palm3FoilDatabase(this);
+//        palmOilDatabase = new palmOilDatabase(this);
         Log.v(LOG_TAG, "Congrats! MyService Created");
 //        Toast.makeText(this, "Congrats! MyService Created", Toast.LENGTH_LONG).show();
         Log.d(LOG_TAG, "onCreate");
@@ -236,8 +236,8 @@ public class FalogService extends Service implements LocationListener {
 //        return START_NOT_STICKY;
 
         try {
-            palm3FoilDatabase = Palm3FoilDatabase.getPalm3FoilDatabase(this);
-            palm3FoilDatabase.createDataBase();
+            palmOilDatabase = PalmOilDatabase.getpalmOilDatabase(this);
+            palmOilDatabase.createDataBase();
             dataAccessHandler = new DataAccessHandler(context);
         } catch (Exception e) {
             e.getMessage();
@@ -356,7 +356,7 @@ public class FalogService extends Service implements LocationListener {
             if (actualDistance >= 100) {
 
                 if (Integer.parseInt(CreatedByUserId) != 12345 && Integer.parseInt(UpdatedByUserId) != 12345) {
-                    palm3FoilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
+                    palmOilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
                 }
 
                 DataSyncHelper.sendTrackingData(context, new ApplicationThread.OnComplete() {
@@ -374,7 +374,7 @@ public class FalogService extends Service implements LocationListener {
             }
         } else {
             if (Integer.parseInt(CreatedByUserId) != 12345 && Integer.parseInt(UpdatedByUserId) != 12345) {
-                palm3FoilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
+                palmOilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
             }
 
             DataSyncHelper.sendTrackingData(context, new ApplicationThread.OnComplete() {
@@ -436,7 +436,7 @@ public class FalogService extends Service implements LocationListener {
 //                if (actualDistance >= 250) {
 //
 //                    if(Integer.parseInt(CreatedByUserId) != 12345 && Integer.parseInt(UpdatedByUserId) != 12345) {
-//                        palm3FoilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
+//                        palmOilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
 //                    }
 //
 //                    DataSyncHelper.sendTrackingData(context, new ApplicationThread.OnComplete() {
@@ -456,7 +456,7 @@ public class FalogService extends Service implements LocationListener {
 //                }
 //            } else {
 //                if(Integer.parseInt(CreatedByUserId) != 12345 && Integer.parseInt(UpdatedByUserId) != 12345) {
-//                    palm3FoilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
+//                    palmOilDatabase.insertLatLong(latitude, longitude, IsActive, CreatedByUserId, CreatedDate, UpdatedByUserId, UpdatedDate, IMEINumber, ServerUpdatedStatus);
 //                }
 //
 //                DataSyncHelper.sendTrackingData(context, new ApplicationThread.OnComplete() {

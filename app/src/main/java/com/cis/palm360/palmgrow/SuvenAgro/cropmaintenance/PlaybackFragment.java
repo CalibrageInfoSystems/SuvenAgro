@@ -230,7 +230,7 @@ public class PlaybackFragment extends DialogFragment {
     private void startPlaying() {
         mPlayButton.setImageResource(R.drawable.pause);
         mMediaPlayer = new MediaPlayer();
-        String filepath = CommonUtils.get3FFileRootPath() + "/palm_Audio/" + "ComplaintsAudios/"+item.getName()+".mp3";
+        String filepath = CommonUtils.getFileRootPath() + "/palm_Audio/" + "ComplaintsAudios/"+item.getName()+".mp3";
         if(CommonUtils.isFileExisted(filepath)){
             try {
                 mMediaPlayer.setDataSource(filepath);

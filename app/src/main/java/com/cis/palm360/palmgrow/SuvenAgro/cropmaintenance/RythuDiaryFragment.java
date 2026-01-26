@@ -201,7 +201,7 @@ public class RythuDiaryFragment extends Fragment implements View.OnClickListener
         try {
 
 
-            File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Pictures/" + "RythuDiaryImages");
+            File pictureDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Pictures/" + "RythuDiaryImages");
             if (!pictureDirectory.exists()) {
                 pictureDirectory.mkdirs();
             }

@@ -678,7 +678,7 @@ public class ConversionIDProofFragment extends BaseFragment implements IdProofsL
     }
 
     private File createImageFile() throws IOException {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "palm_Pictures/" + "FarmerIdProofs");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "palm_Pictures/" + "FarmerIdProofs");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

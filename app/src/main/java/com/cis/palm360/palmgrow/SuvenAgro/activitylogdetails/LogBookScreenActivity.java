@@ -20,7 +20,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.areacalculator.LatLongListener;
 import com.cis.palm360.palmgrow.SuvenAgro.areacalculator.LocationProvider;
 import com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.ui.OilPalmBaseActivity;
 import com.cis.palm360.palmgrow.SuvenAgro.utils.UiUtils;
 
@@ -30,7 +30,7 @@ public class LogBookScreenActivity extends OilPalmBaseActivity {
     Button save;
     DataAccessHandler dataAccessHandler;
     String clientname_str, location_str, details_str, mobileNumber_str, createdDate, serverStatus;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     private static final String LOG_TAG = "MyService";
     float latitude, longitude;
     int createdByUser;
@@ -80,7 +80,7 @@ public class LogBookScreenActivity extends OilPalmBaseActivity {
         baseLayout.addView(parentView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setTile("Log Book");
         dataAccessHandler = new DataAccessHandler(this);
-        palm3FoilDatabase = new Palm3FoilDatabase(this);
+        palmOilDatabase = new PalmOilDatabase(this);
         clientname = parentView.findViewById(R.id.clientname);
         mobileNumber = parentView.findViewById(R.id.clientmobilenum);
         location = parentView.findViewById(R.id.clientlocation);
@@ -118,7 +118,7 @@ public class LogBookScreenActivity extends OilPalmBaseActivity {
 
                 latitude = Float.parseFloat(String.valueOf(currentLatitude));
                 longitude = Float.parseFloat(String.valueOf(currentLongitude));
-                boolean isInserted = palm3FoilDatabase.insertLogDetails(clientname_str, mobileNumber_str, location_str, details_str, latitude, longitude, serverStatus);
+                boolean isInserted = palmOilDatabase.insertLogDetails(clientname_str, mobileNumber_str, location_str, details_str, latitude, longitude, serverStatus);
                 if (isInserted) {
                     UiUtils.showCustomToastMessage("Data Inserted Successfully", this, 0);
                     finish();

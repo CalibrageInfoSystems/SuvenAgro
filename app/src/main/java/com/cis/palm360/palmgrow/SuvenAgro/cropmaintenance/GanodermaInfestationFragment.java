@@ -1,7 +1,7 @@
 package com.cis.palm360.palmgrow.SuvenAgro.cropmaintenance;
 
 import static android.app.Activity.RESULT_OK;
-import static com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase.LOG_TAG;
+import static com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase.LOG_TAG;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -464,7 +464,7 @@ Log.e("=========mCurrentPhotoPath",mCurrentPhotoPath+"");
     }
 
     private File createImageFile() throws IOException {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "/Palm_Pictures/" + "ganodermaPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "/Palm_Pictures/" + "ganodermaPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

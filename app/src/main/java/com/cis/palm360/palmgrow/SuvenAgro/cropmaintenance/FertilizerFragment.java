@@ -170,7 +170,7 @@ public class FertilizerFragment extends Fragment implements View.OnClickListener
 
         if (cropMaintenanceDocs != null) {
 
-            fileToDownLoad = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
+            fileToDownLoad = new File(CommonUtils.getFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
         }
 
         setHasOptionsMenu(true);

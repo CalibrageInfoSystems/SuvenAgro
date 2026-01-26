@@ -115,7 +115,6 @@ import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.PlotDetailsObj;
 import com.cis.palm360.palmgrow.SuvenAgro.palmcare.ClosedDataDetails;
 import com.cis.palm360.palmgrow.SuvenAgro.palmcare.NotVisitedPlotsInfo;
 import com.cis.palm360.palmgrow.SuvenAgro.prospectiveFarmers.ProspectivePlotsModel;
-import com.cis.palm360.palmgrow.SuvenAgro.transportservice.Village;
 import com.cis.palm360.palmgrow.SuvenAgro.utils.ImageUtility;
 
 import org.apache.commons.lang3.StringUtils;
@@ -163,7 +162,7 @@ public class DataAccessHandler<T> {
     public DataAccessHandler(final Context context) {
         this.context = context;
         try {
-            mDatabase = Palm3FoilDatabase.openDataBaseNew();
+            mDatabase = PalmOilDatabase.openDataBaseNew();
             DataBaseUpgrade.upgradeDataBase(context, mDatabase);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -174,7 +173,7 @@ public class DataAccessHandler<T> {
     public DataAccessHandler(final Context context, boolean firstTime) {
         this.context = context;
         try {
-            mDatabase = Palm3FoilDatabase.openDataBaseNew();
+            mDatabase = PalmOilDatabase.openDataBaseNew();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -1061,7 +1060,7 @@ f
 //            Log.e(LOG_TAG, "called on non-db thread", new RuntimeException());
 
         try {
-//            mDatabase = palm3FoilDatabase.getWritableDatabase();
+//            mDatabase = palmOilDatabase.getWritableDatabase();
             String query = "delete from " + tableName;
             if (isWhere) {
                 query = query + " where " + columnName + " = '" + value + "'";
@@ -1105,7 +1104,7 @@ f
 
     //get count
     public String getCountValue(String query) {
-//        mDatabase = palm3FoilDatabase.getWritableDatabase();
+//        mDatabase = palmOilDatabase.getWritableDatabase();
         Cursor mOprQuery = null;
         try {
             mOprQuery = mDatabase.rawQuery(query, null);
@@ -1125,7 +1124,7 @@ f
     }
 
     public String getdeleteDuplicateValue(String query) {
-//        mDatabase = palm3FoilDatabase.getWritableDatabase();
+//        mDatabase = palmOilDatabase.getWritableDatabase();
         Cursor mOprQuery = null;
         try {
             mOprQuery = mDatabase.rawQuery(query, null);
@@ -1146,7 +1145,7 @@ f
 
     public synchronized void insertImageData(String code, String farmercode, String imagepath, String serverUpdatedStatus) {
         try {
-//            mDatabase = palm3FoilDatabase.getWritableDatabase();
+//            mDatabase = palmOilDatabase.getWritableDatabase();
             ContentValues update_values = new ContentValues();
             update_values.put(DatabaseKeys.COLUMN_CODE, code);
             update_values.put(DatabaseKeys.COLUMN_FARMERCODE, farmercode);
@@ -1188,7 +1187,7 @@ f
     public List<Pair> getOnlyPairData(final String query) {
         Log.v(LOG_TAG, "@@@ Generic Query " + query);
         List<Pair> mGenericData = new ArrayList<>();
-//        mDatabase = palm3FoilDatabase.getWritableDatabase();
+//        mDatabase = palmOilDatabase.getWritableDatabase();
         Cursor genericDataQuery = null;
         try {
             genericDataQuery = mDatabase.rawQuery(query, null);
@@ -1240,34 +1239,6 @@ f
         }
         return nurserySaplingDetails;
     }
-
-    public List<Village> getVillageDetails(final String query) {
-        List<Village> nurserySaplingDetails = new ArrayList<>();
-        Cursor cursor = null;
-        try {
-            cursor = mDatabase.rawQuery(query, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                do {
-
-                    Village saplingDetails = new Village();
-                    saplingDetails.setName(cursor.getString(cursor.getColumnIndex("Name")));
-
-
-                    nurserySaplingDetails.add(saplingDetails);
-                } while (cursor.moveToNext());
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-        return nurserySaplingDetails;
-    }
-
 
     //get farmer details based on type of screen selected
     public void getFarmerDetailsForSearch(String key, int offset, int limit, final ApplicationThread.OnComplete onComplete) {
@@ -1506,7 +1477,7 @@ f
     public List<String> getZombiData(final String query) {
         Log.v(LOG_TAG, "@@@ Generic Query " + query);
         List<String> mGenericData = new ArrayList<>();
-//        mDatabase = palm3FoilDatabase.getWritableDatabase();
+//        mDatabase = palmOilDatabase.getWritableDatabase();
         Cursor genericDataQuery = null;
         try {
             genericDataQuery = mDatabase.rawQuery(query, null);
@@ -3132,34 +3103,6 @@ f
         return linkedHashMap;
 
     }
-
-
-    //get village list
-    public ArrayList<Village> mgetVillageList(String query) {
-        Village village = null;
-        Cursor cursor = null;
-        ArrayList<Village> villageArrayList = new ArrayList<>();
-        android.util.Log.v(LOG_TAG, "village query" + query);
-        try {
-            cursor = mDatabase.rawQuery(query, null);
-            if (cursor != null && cursor.moveToFirst()) {
-
-                do {
-                    village = new Village();
-
-                    village.setName(cursor.getString(cursor.getColumnIndex("Name")));
-
-                    villageArrayList.add(village);
-
-                } while (cursor.moveToNext());
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return villageArrayList;
-    }
-
     //get plantation data
     public T getPlantationData(final String query, final int type) {
         Plantation mPlantation = null;
@@ -3347,7 +3290,7 @@ f
         List<ImageDetails> imageDetailsList = new ArrayList<>();
         Cursor cursor = null;
         try {
-            // mDatabase = palm3FoilDatabase.getReadableDatabase();
+            // mDatabase = palmOilDatabase.getReadableDatabase();
             cursor = mDatabase.rawQuery(Queries.getInstance().getImageDetails(), null);
             if (cursor.moveToFirst()) {
                 do {

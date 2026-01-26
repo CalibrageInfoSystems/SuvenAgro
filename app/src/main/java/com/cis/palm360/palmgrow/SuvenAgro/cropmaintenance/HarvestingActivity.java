@@ -29,7 +29,7 @@ import com.cis.palm360.palmgrow.SuvenAgro.common.CustomAutoAdapter;
 import com.cis.palm360.palmgrow.SuvenAgro.common.InputFilterMinMax;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DataAccessHandler;
 import com.cis.palm360.palmgrow.SuvenAgro.database.DatabaseKeys;
-import com.cis.palm360.palmgrow.SuvenAgro.database.Palm3FoilDatabase;
+import com.cis.palm360.palmgrow.SuvenAgro.database.PalmOilDatabase;
 import com.cis.palm360.palmgrow.SuvenAgro.database.Queries;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.BasicHarvestorDetails;
 import com.cis.palm360.palmgrow.SuvenAgro.dbmodels.HarvestorDataModel;
@@ -73,7 +73,7 @@ public class HarvestingActivity extends OilPalmBaseActivity {
     private DataAccessHandler dataAccessHandler;
     LinearLayout detailsinformedtoFarmerLL,harvestingcodell,autoselectharvestorLL,loosefruitweightLL;
     LinkedHashMap collecectionCenterList;
-    private Palm3FoilDatabase palm3FoilDatabase;
+    private PalmOilDatabase palmOilDatabase;
     String SelectedccCode;
     RadioGroup radioGroup;
 
@@ -90,7 +90,7 @@ public class HarvestingActivity extends OilPalmBaseActivity {
         baseLayout.addView(parentView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         android.util.Log.v("@@@KK", CommonConstants.PLOT_CODE);
         dataAccessHandler = new DataAccessHandler(HarvestingActivity.this);
-        palm3FoilDatabase = new Palm3FoilDatabase(this);
+        palmOilDatabase = new PalmOilDatabase(this);
         initView();
         setViews();
         setTile("Harvesting Screen");

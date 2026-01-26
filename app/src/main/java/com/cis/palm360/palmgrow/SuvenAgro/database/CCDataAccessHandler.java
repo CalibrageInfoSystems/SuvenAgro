@@ -23,7 +23,7 @@ public class CCDataAccessHandler {
 
     public CCDataAccessHandler(final Context context) {
         try {
-            mDatabase = Palm3FoilDatabase.openDataBaseNew();
+            mDatabase = PalmOilDatabase.openDataBaseNew();
         } catch (SQLException e) {
             e.printStackTrace();
         }

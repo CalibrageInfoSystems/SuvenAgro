@@ -621,7 +621,7 @@ public class PersonalDetailsFragment extends Fragment implements RecyclerItemCli
     }
 
     private File createImageFile() {
-        File pictureDirectory = new File(CommonUtils.get3FFileRootPath() + "Palm_Pictures/" + "FarmerPhotos");
+        File pictureDirectory = new File(CommonUtils.getFileRootPath() + "Palm_Pictures/" + "FarmerPhotos");
         if (!pictureDirectory.exists()) {
             pictureDirectory.mkdirs();
         }

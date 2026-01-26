@@ -37,8 +37,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import static com.cis.palm360.palmgrow.SuvenAgro.R.id.diaseaseList;
-import static com.cis.palm360.palmgrow.SuvenAgro.R.id.saveBtn;
 import static com.cis.palm360.palmgrow.SuvenAgro.common.CommonUtils.spinnerSelect;
 import static com.cis.palm360.palmgrow.SuvenAgro.cropmaintenance.CommonUtilsNavigation.getKey;
 
@@ -125,7 +123,7 @@ public class NDScreen extends Fragment implements View.OnClickListener, PalmDeta
 
         if (cropMaintenanceDocs != null) {
 
-            fileToDownLoad = new File(CommonUtils.get3FFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
+            fileToDownLoad = new File(CommonUtils.getFileRootPath() + "PalmGrow_CMDocs/" + cropMaintenanceDocs.getFileName() + cropMaintenanceDocs.getFileExtension());
 
             if (null != fileToDownLoad && fileToDownLoad.exists()) {
 
