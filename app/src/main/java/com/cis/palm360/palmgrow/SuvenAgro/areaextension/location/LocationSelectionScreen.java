@@ -85,21 +85,17 @@ public class LocationSelectionScreen extends AppCompatActivity {
 
                 if (stateDataMap == null || stateDataMap.size() == 0 ||
                         statespin.getSelectedItem() == null || statespin.getSelectedItemPosition() == 0) {
-//                    Toast.makeText(LocationSelectionScreen.this, "Please Select State", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Please Select State", LocationSelectionScreen.this, 1);
 
                 } else  if (districtSpin.getSelectedItemPosition() == 0) {
-//                    Toast.makeText(LocationSelectionScreen.this, "Please Select a District", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Please Select a District", LocationSelectionScreen.this, 1);
 
                 }
                 else if (mandalDataMap == null || mandalDataMap.size() == 0 ||
                         mandalSpin.getSelectedItem() == null || mandalSpin.getSelectedItemPosition() == 0) {
-//                    Toast.makeText(LocationSelectionScreen.this, "Please Select Mandal", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Please Select Mandal", LocationSelectionScreen.this, 1);
                 } else if (villagesDataMap == null || villagesDataMap.size() == 0 ||
                         villageSpinner.getSelectedItem() == null || villageSpinner.getSelectedItemPosition() == 0) {
-//                    Toast.makeText(LocationSelectionScreen.this, "Please Select Village", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Please Select Village", LocationSelectionScreen.this, 1);
                 } else {
                     // All selections are valid, proceed
@@ -109,26 +105,6 @@ public class LocationSelectionScreen extends AppCompatActivity {
             }
         });
 
-
-
-/*        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (CommonUtils.isEmptySpinner(statespin)) {
-                    Toast.makeText(LocationSelectionScreen.this, "Please Select State", Toast.LENGTH_SHORT).show();
-                } else if (CommonUtils.isEmptySpinner(districtSpin)) {
-                    Toast.makeText(LocationSelectionScreen.this, "Please Select District", Toast.LENGTH_SHORT).show();
-                } else if (CommonUtils.isEmptySpinner(mandalSpin)) {
-                    Toast.makeText(LocationSelectionScreen.this, "Please Select Mandal", Toast.LENGTH_SHORT).show();
-                } else if (CommonUtils.isEmptySpinner(villageSpinner)) {
-                    Toast.makeText(LocationSelectionScreen.this, "Please Select Village", Toast.LENGTH_SHORT).show();
-                } else {
-                    startActivity(new Intent(LocationSelectionScreen.this, RegistrationFlowScreen.class));
-                    finish();
-                }
-
-            }
-        });*/
         stateDataMap = dataAccessHandler.getPairData(Queries.getInstance().getStatesMasterQuery());
 
         if (stateDataMap != null && stateDataMap.size() == 1) {
@@ -183,131 +159,6 @@ public class LocationSelectionScreen extends AppCompatActivity {
                 @Override public void onNothingSelected(AdapterView<?> parent) {}
             });
         }
-
-
-//        statespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (i == 0) {
-//                    // Clear all dependent spinners
-//                    districtSpin.setAdapter(null);
-//                    mandalSpin.setAdapter(null);
-//                    villageSpinner.setAdapter(null);
-//                    ClusterNameTv.setText("");
-//                    CommonConstants.stateId = null;
-//                    CommonConstants.stateName = "";
-//                    CommonConstants.stateCode = "";
-//                    return;
-//                }
-//                if (stateDataMap != null && stateDataMap.size() > 0 && statespin.getSelectedItemPosition() != 0) {
-//                    CommonConstants.stateId = stateDataMap.keySet().toArray(new String[stateDataMap.size()])[i - 1];
-//                    Log.v(LOG_TAG, "@@@ Selected State " + CommonConstants.stateId);
-//                    districtDataMap = dataAccessHandler.getPairData(Queries.getInstance().getDistrictQuery(CommonConstants.stateId));
-//                    ArrayAdapter<String> spinnerDistrictArrayAdapter = new ArrayAdapter<>(LocationSelectionScreen.this, android.R.layout.simple_spinner_item, CommonUtils.arrayFromPair(districtDataMap, "District"));
-//                    spinnerDistrictArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                    districtSpin.setAdapter(spinnerDistrictArrayAdapter);
-//                    CommonConstants.stateName = statespin.getSelectedItem().toString();
-//                    Pair statePair = stateDataMap.get(CommonConstants.stateId);
-//                    CommonConstants.stateCode = statePair.first.toString();
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-//        districtSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (i == 0) {
-//                    mandalSpin.setAdapter(null);
-//                    villageSpinner.setAdapter(null);
-//                    ClusterNameTv.setText("");
-//                    CommonConstants.districtId = null;
-//                    return;
-//                }
-
-//                if (districtDataMap != null && districtDataMap.size() > 0 && districtSpin.getSelectedItemPosition() != 0) {
-//                    CommonConstants.districtId = districtDataMap.keySet().toArray(new String[districtDataMap.size()])[i - 1];
-//                    Log.v(LOG_TAG, "@@@ Selected State " + CommonConstants.districtId);
-//                    mandalDataMap = dataAccessHandler.getPairData(Queries.getInstance().getMandalsQuery(CommonConstants.districtId));
-//                    ArrayAdapter<String> spinnerMandalArrayAdapter = new ArrayAdapter<>(LocationSelectionScreen.this, android.R.layout.simple_spinner_item, CommonUtils.arrayFromPair(mandalDataMap, "Mandal"));
-//                    spinnerMandalArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                    mandalSpin.setAdapter(spinnerMandalArrayAdapter);
-//                    CommonConstants.districtName = districtSpin.getSelectedItem().toString();
-//                    Pair districtPair = districtDataMap.get(CommonConstants.districtId);
-//                    CommonConstants.districtCode = districtPair.first.toString();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-//        mandalSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (i == 0) {
-//                    villageSpinner.setAdapter(null);
-//                    ClusterNameTv.setText("");
-//                    CommonConstants.mandalId = null;
-//                    return;
-//                }
-//
-//                if (mandalDataMap != null && mandalDataMap.size() > 0 && mandalSpin.getSelectedItemPosition() != 0) {
-//                    CommonConstants.mandalId = mandalDataMap.keySet().toArray(new String[mandalDataMap.size()])[i - 1];
-//                    Log.v(LOG_TAG, "@@@ Selected State " + CommonConstants.mandalId);
-//                    CommonConstants.mandalName = mandalSpin.getSelectedItem().toString();
-//
-//                    Pair mandalPair = mandalDataMap.get(CommonConstants.mandalId);
-//                    CommonConstants.mandalCode = mandalPair.first.toString();
-//                    CommonConstants.prevMandalPos = i;
-//
-//                    villagesDataMap = dataAccessHandler.getPairData(Queries.getInstance().getVillagesQuery(CommonConstants.mandalId));
-//                    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(LocationSelectionScreen.this, android.R.layout.simple_spinner_item, CommonUtils.arrayFromPair(villagesDataMap, "Village"));
-//                    spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                    villageSpinner.setAdapter(spinnerArrayAdapter);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-//
-//        villageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                if (villagesDataMap != null && villagesDataMap.size() > 0 && villageSpinner.getSelectedItemPosition() != 0) {
-//                    CommonConstants.villageId = villagesDataMap.keySet().toArray(new String[villagesDataMap.size()])[i - 1];
-//                    villageCodeStr = villageSpinner.getSelectedItem().toString();
-//                    Pair villagePair = villagesDataMap.get(CommonConstants.villageId);
-//                    CommonConstants.villageCode = villagePair.first.toString();
-////                  CommonConstants.FARMER_CODE = dataAccessHandler.getGeneratedFarmerCode(Queries.getInstance().getMaxNumberQuery(CommonConstants.villageId, CommonConstants.villageCode));
-//                    CommonConstants.villageName = villageSpinner.getSelectedItem().toString();
-//                    CommonConstants.prevVillagePos = i;
-//                    String ClusterName = dataAccessHandler.getOnlyOneValueFromDb(Queries.getInstance().getClusterName(CommonConstants.villageId));
-//
-//                    if (ClusterName != null && !ClusterName.trim().isEmpty()) {
-//                        ClusterNameTv.setText(" " + ClusterName);
-//                    } else {
-//                        ClusterNameTv.setText(""); // Set to empty if null or empty
-//                    }
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
     }
 
     private void loadDistricts(String stateId) {
@@ -351,36 +202,6 @@ public class LocationSelectionScreen extends AppCompatActivity {
                 // Load mandals
                 loadMandals(districtId);
             }
-
-            // Only one district – auto-select
-//            String key = new ArrayList<>(districtDataMap.keySet()).get(0);
-//            Pair pair = districtDataMap.get(key);
-//
-//            CommonConstants.districtId = key;
-//            CommonConstants.districtCode = pair.first.toString();
-//            CommonConstants.districtName = pair.second.toString();
-//
-//            Log.d("DEBUG", "Auto-selected district: " + CommonConstants.districtId + " | " + CommonConstants.districtName);
-//
-//            // Set adapter with the single item so it displays in spinner
-//            List<String> singleItemList = new ArrayList<>();
-//            singleItemList.add(CommonConstants.districtName);  // This ensures it shows in the spinner
-//
-//            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, singleItemList);
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            districtSpin.setAdapter(adapter);
-//            districtSpin.setSelection(0);  // Force selection
-           // districtSpin.setSelection(CommonUtilsNavigation.getvalueFromHashMap(districtDataMap,  CommonConstants.districtCode));
-
-            // Optional: disable spinner if you don't want user to change
-            // districtSpin.setEnabled(false);
-
-            // Proceed to mandals
-//            loadMandals(CommonConstants.districtId);
-//
-//        }
-
-
 
         else if (districtDataMap != null && districtDataMap.size() > 1) {
             // Multiple districts – allow selection
@@ -526,12 +347,6 @@ public class LocationSelectionScreen extends AppCompatActivity {
                             ClusterNameTv.setText("");
                         CommonConstants.villageId = null;
                     }
-
-//                    CommonConstants.villageId = new ArrayList<>(villagesDataMap.keySet()).get(position - 1);
-//                    Pair pair = villagesDataMap.get(CommonConstants.villageId);
-//                    CommonConstants.villageCode = pair.first.toString();
-//                    CommonConstants.villageName = pair.second.toString();
-
 
                 }
 

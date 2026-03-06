@@ -68,13 +68,6 @@ public class MissingTreesInfoAdapter extends RecyclerView.Adapter<MissingTreesIn
         holder.tvmissingstrees.setText(item.getMissingTrees() != null ? item.getMissingTrees().trim() : "");
         holder.tvpercentage.setText(item.getPercent() != null ? item.getPercent().trim() : "");
 
-//        holder.convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.v(LOG_TAG, "@@@ on item clicked");
-//                recyclerItemClickListener.onItemSelected(position);
-//            }
-//        });
     }
 
     @Override
@@ -86,10 +79,6 @@ public class MissingTreesInfoAdapter extends RecyclerView.Adapter<MissingTreesIn
         this.mList = list;
         notifyDataSetChanged();
     }
-
-//    public void setRecyclerItemClickListener(RecyclerItemClickListener recyclerItemClickListener) {
-//        this.recyclerItemClickListener = recyclerItemClickListener;
-//    }
 
     public class AlertMissingTreesViewHolder extends RecyclerView.ViewHolder {
 

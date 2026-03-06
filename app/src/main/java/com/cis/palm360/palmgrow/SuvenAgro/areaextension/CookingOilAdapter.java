@@ -46,9 +46,6 @@ public class CookingOilAdapter extends RecyclerView.Adapter<CookingOilAdapter.My
 
         holder.quantityText.setText(coockingOilTypelList.get(position).getMonthlyquantity() + "" == null ? "amount" : String.format("%.2f", coockingOilTypelList.get(position).getMonthlyquantity()));
         holder.amountPaidText.setText(coockingOilTypelList.get(position).getTotalpaidamount() + "" == null ? "amount" : String.format("%.2f", coockingOilTypelList.get(position).getTotalpaidamount()));
-
-//        holder.quantityText.setText(""+coockingOilTypelList.get(position).getMonthlyquantity());
-//        holder.amountPaidText.setText(""+coockingOilTypelList.get(position).getTotalpaidamount());
     }
 
 

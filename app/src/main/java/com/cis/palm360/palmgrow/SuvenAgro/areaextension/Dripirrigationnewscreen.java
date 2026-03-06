@@ -118,8 +118,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
     ImageView btnUploadDdImage, btnUploadAckImage;
     FrameLayout layoutDdImage, layoutAckImage;
     ImageView previewImageDd, previewImageAck;
-    //    private LinkedHashMap<String, String> trenchMap = new LinkedHashMap<>();
-//    private LinkedHashMap<String, String> paymentmodeMap = new LinkedHashMap<>();
     private static final int IMAGE_TYPE_DD = 1;
     private static final int IMAGE_TYPE_ACK = 2;
     private static final int IMAGE_TYPE_851 = 3;
@@ -146,8 +144,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
     String horticulturehoname;
     private FormItem currentFormItem; // Track which card initiated image selection
 
-    //  EditText etBankName,etAmount,etchecknumber,Accountnum;
-    //  TextView tv_selectdate,tv_selectcompany,tv_selectpaymentmode,tv_amount,tv_bank_name,tv_account_number,tv_checknumber,tv_trenching,tv_plantcount,tv_comments;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override
@@ -177,8 +173,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
 
             if (dripsavedata == null || dripsavedata.isEmpty()) {
                 UiUtils.showCustomToastMessage("No Changes made to Submit.", this, 0);
-
-                // Toast.makeText(this, "No steps filled yet", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -188,8 +182,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
                         + ", dripStatusDone = " + model.getDripStatusDone()
                         + ", comments = " + model.getComments());
             }
-
-            //   ProgressBar.showProgressBar(this); // Optional: show progress while saving
 
             DataSavingHelper.savedripirrigation(this,  true,new ApplicationThread.OnComplete<String>() {
                 @Override
@@ -399,8 +391,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
         btnUploadAckImage.setVisibility(View.GONE);
         tv_ack_image.setVisibility(View.GONE);
         tv_dd_image.setVisibility(View.GONE);
-//   btn_delete_image_dd.setVisibility(View.GONE);
-//        btn_delete_image_ack.setVisibility(View.GONE);
         btnAddImage851.setVisibility(View.GONE);
         btnAddImage832.setVisibility(View.GONE);
         tvImage851.setVisibility(View.GONE);
@@ -415,17 +405,9 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
         Accountnum.setVisibility(View.GONE);
         etchecknumber.setHint("");
 
-        // Clear and hide TextViews
-        //   tv_checknumber.setText("");
         tv_checknumber.setVisibility(View.GONE);
-
-        // tv_bank_name.setText("");
         tv_bank_name.setVisibility(View.GONE);
-
-        //   tv_account_number.setText("");
         tv_account_number.setVisibility(View.GONE);
-
-        // tv_amount.setText("");
         tv_amount.setVisibility(View.GONE);
 
         tvApiBoundText.setVisibility(View.GONE);
@@ -434,11 +416,7 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
         spinnerTrenching.setVisibility(View.GONE);
 
         editDateselection.setOnClickListener(v -> openDatePicker(editDateselection));
-//
-//        btnUploadDdImage.setOnClickListener(v -> {
-//            selectedImageType = IMAGE_TYPE_DD;
-//            showImagePickDialog();
-//        });
+
         btnUploadDdImage.setOnClickListener(v -> {
             selectedImageType = IMAGE_TYPE_DD;
             currentFormItem = item; // 💡 set the item related to this card
@@ -503,25 +481,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             }
         });
 
-     /*   btn_delete_image_ack.setOnClickListener(v -> {
-            previewImageAck.setImageDrawable(null);
-            previewImageAck.setVisibility(View.GONE);
-            currentPhotoBitmap2 = null;
-            layoutAckImage.setVisibility(View.GONE);
-            btnUploadAckImage.setVisibility(View.VISIBLE);
-            if (finalSavedModel != null) {
-
-                File file = new File(finalSavedModel.getAckFileLocation());
-                if (file.exists()) {
-                    file.delete();
-                }
-                finalSavedModel.setAckFileExtension(null);
-                finalSavedModel.setAckFileLocation(null);
-                finalSavedModel.setAckFileExtension(null);
-            }
-
-        });*/
-
         deleteImage851.setOnClickListener(v -> {
             if (currentFormItem != null && currentFormItem.imagePath851 != null) {
                 File file = new File(currentFormItem.imagePath851);
@@ -540,56 +499,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
                 Log.d("ImageDelete", "No image to delete for 851");
             }
         });
-       /* deleteImage851.setOnClickListener(v -> {
-            previewImage851.setImageDrawable(null);
-            previewImage851.setVisibility(View.GONE);
-            currentPhotoBitmap851 = null;
-            layoutImage851.setVisibility(View.GONE);
-            btnAddImage851.setVisibility(View.VISIBLE);
-
-            DripIrrigationModel modelToDelete = finalSavedModel;
-            if (modelToDelete == null) {
-                Log.d("DripDelete", "finalSavedModel is null for 851, fetching from DB...");
-                modelToDelete = (DripIrrigationModel) dataAccessHandler.getDripIrrigationDetails(
-                        Queries.getInstance().getDripIrrigationstatuswise(CommonConstants.PLOT_CODE, 851), 0);
-            }
-
-            if (modelToDelete != null && modelToDelete.getFileLocation() != null) {
-                File file = new File(modelToDelete.getFileLocation());
-                if (file.exists()) {
-                    boolean deleted = file.delete();
-                    Log.d("DripDelete", "851 File deleted: " + deleted);
-                } else {
-                    Log.d("DripDelete", "851 File not found: " + modelToDelete.getFileLocation());
-                }
-
-                // ✅ Clear metadata so image doesn't reappear later
-                modelToDelete.setFileLocation(null);
-                modelToDelete.setFileName(null);
-                modelToDelete.setFileExtension(null);
-
-                // ✅ Optionally update DataManager model too if using in-memory list
-                List<DripIrrigationModel> dripList =
-                        (List<DripIrrigationModel>) DataManager.getInstance().getDataFromManager(DataManager.DripIrrigation);
-                if (dripList != null) {
-                    for (DripIrrigationModel model : dripList) {
-                        if (model.getPlotCode().equals(CommonConstants.PLOT_CODE)
-                                && model.getStatusTypeId() == 851) {
-                            model.setFileLocation(null);
-                            model.setFileName(null);
-                            model.setFileExtension(null);
-                            break;
-                        }
-                    }
-                    DataManager.getInstance().addData(DataManager.DripIrrigation, dripList);
-                    Log.d("DripDelete", "Drip list updated in memory.");
-                }
-            } else {
-                Log.d("DripDelete", "No model found for 851 to delete image.");
-            }
-        });
-*/
-
         deleteImage832.setOnClickListener(v -> {
             if (currentFormItem != null && currentFormItem.imagePath832 != null) {
                 File file = new File(currentFormItem.imagePath832);
@@ -609,39 +518,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             }
         });
 
-     /*   deleteImage832.setOnClickListener(v -> {
-            previewImage832.setImageDrawable(null);
-            previewImage832.setVisibility(View.GONE);
-            currentPhotoBitmap832 = null;
-            layoutImage832.setVisibility(View.GONE);
-            btnAddImage832.setVisibility(View.VISIBLE);
-
-            DripIrrigationModel modelToDelete = finalSavedModel;
-            if (modelToDelete == null) {
-                Log.d("DripDelete", "finalSavedModel is null for 832, fetching from DB...");
-                modelToDelete = (DripIrrigationModel) dataAccessHandler.getDripIrrigationDetails(
-                        Queries.getInstance().getDripIrrigationstatuswise(CommonConstants.PLOT_CODE, 832), 0);
-            }
-
-            if (modelToDelete != null && modelToDelete.getFileLocation() != null) {
-                File file = new File(modelToDelete.getFileLocation());
-                if (file.exists()) {
-                    boolean deleted = file.delete();
-                    Log.d("DripDelete", "832 File deleted: " + deleted);
-                } else {
-                    Log.d("DripDelete", "832 File not found: " + modelToDelete.getFileLocation());
-                }
-
-                modelToDelete.setFileLocation(null);
-                modelToDelete.setFileName(null);
-                modelToDelete.setFileExtension(null);
-                Log.d("DripDelete", "832 image metadata cleared.");
-            } else {
-                Log.d("DripDelete", "No model found for 832 to delete image.");
-            }
-        });
-
-*/
         btnUploadPdf.setOnClickListener(v -> {
             currentPdfButton = btnUploadPdf;
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -1207,10 +1083,7 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
         int currentIndex = index;
         rgAnswer.setOnCheckedChangeListener((group, checkedId) -> {
             boolean isYes = checkedId == R.id.yes_button;
-//            if (isYes && item.statusTypeId == 826) {
-//                btnNo.setEnabled(false);
-//                btnNo.setAlpha(0.5f);
-//            }
+
             handleAnswerSelection(isYes, item, card, currentIndex);
         });
 
@@ -1219,7 +1092,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             boolean isNo = btnNo.isChecked();
 
             if (!isYes && !isNo) {
-//                Toast.makeText(this, "Please select Yes or No", Toast.LENGTH_SHORT).show();
                 UiUtils.showCustomToastMessage("Please select Yes or No", this, 1);
                 return;
             }
@@ -1452,11 +1324,7 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
                 break;
 
             case 827:
-//                if (item.uploadPdf && (currentPdfPath == null || currentPdfPath.isEmpty())) {
-//                    UiUtils.showCustomToastMessage("Please upload a document.", this, 0);
-//
-//                    return;
-//                }
+
                 if (selectedCompney.equalsIgnoreCase("-- Select Company Name --") || selectedCompney.isEmpty()) {
                     UiUtils.showCustomToastMessage("Please Select Company Name.", this, 1);
 
@@ -1515,18 +1383,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
                         }
                         break;
                 }
-
-//                if (item.uploadImage && (previewImage.getDrawable() == null)) {
-//                    UiUtils.showCustomToastMessage("Please upload a DD image.", this, 0);
-//
-//                    return;
-//                }
-//                if (item.uploadImage && (previewImage2.getDrawable() == null)) {
-//                    UiUtils.showCustomToastMessage("Please upload An Acknowledgement Image.", this, 0);
-//
-//                    return;
-//                }
-
                 break;
 
             case 829:
@@ -2058,7 +1914,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             tvApiBoundText.setVisibility(View.GONE);
             tv_plantcount.setVisibility(View.GONE);
             tv_comments.setVisibility(View.GONE);
-            //  tv_selectdate,tv_selectcompany,tv_selectpaymentmode,tv_amount,tv_bank_name,tv_account_number,tv_checknumber,tv_trenching,tv_plantcount,tv_comments
 
         }
     }
@@ -2519,8 +2374,6 @@ public class Dripirrigationnewscreen extends AppCompatActivity {
             nextBtnNo.setChecked(true);
 
 // Hide radio buttons and OK initially
-//            nextBtnYes.setVisibility(View.GONE);
-//            nextBtnNo.setVisibility(View.GONE);
             nextBtnOk.setVisibility(View.GONE);
 
 // Only show Yes (enabled), and wait for manual tap

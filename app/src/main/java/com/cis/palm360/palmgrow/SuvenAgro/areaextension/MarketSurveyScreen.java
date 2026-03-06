@@ -200,8 +200,6 @@ public class MarketSurveyScreen extends AppCompatActivity {
                 String  noOfDays = String.valueOf(TimeUnit.DAYS.convert(diff,TimeUnit.MILLISECONDS));
                 days = StringUtils.leftPad(noOfDays,3,"0");
                 financalYrDays = String.valueOf(financialYear).substring(2,3) + days;
-//                    Toast.makeText(getActivity(),"Nof Days"+days,Toast.LENGTH_LONG).show();
-//                financalSubStringYear = String.valueOf(financialYear).substring(2,3);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -225,16 +223,9 @@ public class MarketSurveyScreen extends AppCompatActivity {
 
         framerCodeText.setText(" :  " + fullname);
 
-//        framerCodeText.setText(": " + CommonConstants.farmerFirstName + " " + CommonConstants.farmerMiddleName + " " + CommonConstants.farmerLastName);
-
         quantityMonth = (TextView) findViewById(R.id.quantity_mnth);
         amountMonth = (TextView) findViewById(R.id.amount_mnth);
         CommonConstants.MarketSurveyCode= CommonConstants.MARKET_SURVEY_CODE_PREFIX + CommonConstants.FARMER_CODE;
-//        CommonConstants.MarketSurveyCode = dataAccessHandler.getGeneratedMarketSurveyCode(Queries.getInstance().getMaxNumberQueryMarketSurvey(CommonConstants.villageId, CommonConstants.villageCode));
-//        generatedMarketSuyCode = CommonConstants.MARKET_SURVEY_CODE_PREFIX + CommonConstants.FARMER_CODE;
-//        marketsurveycode = dataAccessHandler.getOnlyOneValueFromDb(Queries.getInstance().getMarketSurveyId(CommonConstants.FARMER_CODE));
-//        Toast.makeText(MarketSurveyScreen.this,"marketsurveycode"+marketsurveycode,Toast.LENGTH_LONG).show();
-
 
         updateLabel();
 
@@ -346,11 +337,7 @@ public class MarketSurveyScreen extends AppCompatActivity {
     private void bindData() {
 
         calculateTotals();
-//        quantityMonth.setText(totalQuantity == null ? "Total Quantity" : String.format("%.2f", totalQuantity));
-//        // amountMonth.setText(totalAmount == null ? "amount" : "" + totalAmount);
-//        amountMonth.setText(totalAmount == null ? "Total Amount" : String.format("%.2f", totalAmount));
 
-//        marketSurveyDateEdt.setText(marketSurvey.getSurveyDate());
         marketSurveyDateEdt.setText(formatDateForDisplay(marketSurvey.getSurveyDate()));
 //        framerCodeText.setText(marketSurvey.getFarmerCode());
         framerCodeText.setText(fullname);

@@ -106,9 +106,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
 
     private void setViews() {
         mWaterTypeModelList = (ArrayList<WaterResource>) DataManager.getInstance().getDataFromManager(SOURCE_OF_WATER);
-//        if (mWaterTypeModelList == null && (isFromFollowUp() || isFromCropMaintenance() || isFromConversion())) {
-//            mWaterTypeModelList = (ArrayList<WaterResource>) dataAccessHandler.getWaterResourceData(Queries.getInstance().getWaterResourceBinding(CommonConstants.PLOT_CODE), 1);
-//        }
         bindSourceofwaterAdapter();
 
         sourceOfWaterMap = dataAccessHandler.getGenericData(Queries.getInstance().getSourceOfWaterInfo());
@@ -172,7 +169,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
                         mWaterTypeModel.setSourceofwaterid(Integer.parseInt(key));
                         mWaterTypeModel.setBorewellnumber(numberEdit.isShown() ? CommonUtils.convertToBigNumber(numberEdit.getText().toString()) : 0);
                         mWaterTypeModel.setWaterdischargecapacity(waterdischargecapacityEdit.isShown() ? Double.valueOf(waterdischargecapacityEdit.getText().toString()) : 0.0);
-//                        mWaterTypeModel.setCanalwater(wateravailabilityofcanalEdit.isShown() ? Double.valueOf(wateravailabilityofcanalEdit.getText().toString()) : 0.0);
                         mWaterTypeModel.setCanalwater(wateravailabilityofcanalEdit.isShown() ?CommonUtils.convertToBigNumber(wateravailabilityofcanalEdit.getText().toString()) : 0);
                         mWaterTypeModelList.add(mWaterTypeModel);
                         DataManager.getInstance().addData(SOURCE_OF_WATER, mWaterTypeModelList);
@@ -191,7 +187,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
                         butonsLay.setVisibility(View.VISIBLE);
                     }
                 } else{
-                    //CommonUtils.showToast("Please Select Source of Water", getActivity());
                 UiUtils.showCustomToastMessage("Please Select Source of Water", getContext(), 1);}
 
             }
@@ -209,10 +204,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
             public void onClick(View v) {
 
              DataManager.getInstance().addData(SOURCE_OF_WATER, mWaterTypeModelList);
-//                if (updateFromDb) {
-//                    DataManager.getInstance().addData(DataManager.IS_WOP_DATA_UPDATED, true);
-//                }
-          //      CommonConstants.Flags.isWOPDataUpdated = true;
                updateUiListener.updateUserInterface(0);
                 getFragmentManager().popBackStack();
             }
@@ -222,10 +213,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
             @Override
             public void onClick(View v) {
               DataManager.getInstance().addData(SOURCE_OF_WATER, mWaterTypeModelList);
-//                if (updateFromDb) {
-//                    DataManager.getInstance().addData(DataManager.IS_WOP_DATA_UPDATED, true);
-//                }
-             //   CommonConstants.Flags.isWOPDataUpdated = true;
                updateUiListener.updateUserInterface(0);
                 getFragmentManager().popBackStack();
             }
@@ -312,16 +299,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
             editEntryDialogFragment.show(mFragmentManager, "fragment_edit_name");
 
         }
-//        else if (clickItem.equalsIgnoreCase("delete")) {
-//            mWaterTypeModelList.remove(selectPos);
-//
-//            if (mWaterTypeModelList.isEmpty())
-//            {
-//                butonsLay.setVisibility(View.GONE);
-//            }
-//           bindSourceofwaterAdapter();
-//            waterAdapter.notifyDataSetChanged();
-//        }
         else if (clickItem.equalsIgnoreCase("delete")) {
             new AlertDialog.Builder(getContext())
                     .setTitle("Delete Confirmation")
@@ -385,12 +362,6 @@ public class AreaWaterTypeFragment extends Fragment implements AreaWaterTypeAdap
             numberEdit.requestFocus();
             return false;
         }
-/*        if (numberEdit.isShown() && numberEdit.getText().toString().equals("0")) {
-            UiUtils.showCustomToastMessage("Please Enter Valid Number", getActivity(), 1);
-
-            numberEdit.requestFocus();
-            return false;
-        }*/
         if (numberEdit.isShown()) {
             String value = numberEdit.getText().toString().trim();
             try {

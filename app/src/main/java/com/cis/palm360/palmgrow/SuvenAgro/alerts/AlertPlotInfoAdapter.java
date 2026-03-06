@@ -81,19 +81,8 @@ public class AlertPlotInfoAdapter extends RecyclerView.Adapter<AlertPlotInfoAdap
         holder.tvvillageName.setText(item.getVillageName() != null ? item.getVillageName().trim() : "");
         holder.tvmandalName.setText(item.getMandalName() != null ? item.getMandalName().trim() : "");
         holder.tvplotCode.setText(item.getPlotCode() != null ? item.getPlotCode().trim() : "");
-//        holder.tvfarmerCode.setText(item.getFarmerCode() != null ? item.getFarmerCode().trim() : "");
         holder.tvtotalPlotArea.setText(item.getTotalPlotArea() != null ? item.getTotalPlotArea().trim() : "");
         holder.tvpotentialScore.setText(item.getPotentialScore() != null ? item.getPotentialScore().trim() : "");
-//        holder.tv_gvtfarmercode.setText(item.getGovtFarmerCode() != null ? item.getGovtFarmerCode().trim() : "");
-//        holder.gvttvPlotID.setText(item.getGovtPlotCode() != null ? item.getGovtPlotCode().trim() : "");
-
-        // Current Crop
-//        if (item.getCurrentCrop() != null && !item.getCurrentCrop().trim().isEmpty() && !item.getCurrentCrop().trim().equalsIgnoreCase("null")) {
-//            holder.tvcropName.setText(item.getCurrentCrop().trim());
-//            holder.layout_current_crop.setVisibility(View.VISIBLE);
-//        } else {
-//            holder.layout_current_crop.setVisibility(View.GONE);
-//        }
 
 // Field Prioritization
         if (item.getPrioritization() != null && !item.getPrioritization().trim().isEmpty() && !item.getPrioritization().trim().equalsIgnoreCase("null")) {
@@ -127,44 +116,6 @@ public class AlertPlotInfoAdapter extends RecyclerView.Adapter<AlertPlotInfoAdap
             holder.layout_govt_field_code.setVisibility(View.GONE);
         }
 
-
-//        if(item.getLastVistDate() != null && !(item.getLastVistDate().trim().isEmpty())){
-//            String lvd = item.getLastVistDate().replace("T"," ");
-//
-//            Date date = null;
-//            try {
-//                date = inputFormat.parse(lvd);
-//
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//
-//            String lastDate = outputFormat.format(date);
-//
-//            holder.tvlastVistDate.setText(lastDate);
-//        }else{
-//            holder.tvlastVistDate.setText("");
-//        }
-//        if(item.getHarvestDate() != null && !(item.getHarvestDate().trim().isEmpty())){
-//
-///*
-//            String hd = item.getHarvestDate().replace("T"," ");
-//
-//            Date date = null;
-//            try {
-//                date = inputFormat.parse(hd);
-//
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//
-//            String outputDateHD = outputFormat.format(date);*/
-//
-//            holder.tvharvestDate.setText(item.getHarvestDate());
-//        }else{
-//            holder.tvharvestDate.setText("");
-//        }
-
         if (item.getLastVistDate() != null && !(item.getLastVistDate().trim().isEmpty())) {
             String lvd = item.getLastVistDate().replace("T", " ");
             holder.tvlastVistDate.setText(getProperComplaintsDate(lvd));
@@ -190,14 +141,6 @@ public class AlertPlotInfoAdapter extends RecyclerView.Adapter<AlertPlotInfoAdap
         holder.tvPrioritization.setText(item.getPrioritization() != null ? item.getPrioritization().trim() : "");
         holder.tvUserName.setText(item.getUserName() != null ? item.getUserName()  : "");
 
-
-//        holder.convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.v(LOG_TAG, "@@@ on item clicked");
-//                recyclerItemClickListener.onItemSelected(position);
-//            }
-//        });
     }
 
     @Override
@@ -209,10 +152,6 @@ public class AlertPlotInfoAdapter extends RecyclerView.Adapter<AlertPlotInfoAdap
         this.mList = list;
         notifyDataSetChanged();
     }
-
-//    public void setRecyclerItemClickListener(RecyclerItemClickListener recyclerItemClickListener) {
-//        this.recyclerItemClickListener = recyclerItemClickListener;
-//    }
 
     public class AlertPlotDetailsViewHolder extends RecyclerView.ViewHolder {
 
@@ -245,14 +184,12 @@ public class AlertPlotInfoAdapter extends RecyclerView.Adapter<AlertPlotInfoAdap
             tvvillageName = (TextView) view.findViewById(R.id.tvPlotVillage);
             tvtotalPlotArea = (TextView) view.findViewById(R.id.tvSize);
             tvpotentialScore = (TextView) view.findViewById(R.id.tvPlotScore);
-//            tvcropName = (TextView) view.findViewById(R.id.tvCurrentCrop);
             tvlastVistDate = (TextView) view.findViewById(R.id.tvLastVisistedDate);
             tvharvestDate = (TextView) view.findViewById(R.id.tvHarvestingDate);
             tvPrioritization = (TextView) view.findViewById(R.id.tvPlotPrioritization);
             tvUserName= (TextView) view.findViewById(R.id.tvUserName);
             tv_gvtfarmercode = (TextView) view.findViewById(R.id.tv_gvtfarmercode);
             gvttvPlotID = (TextView) view.findViewById(R.id.gvttvPlotID);
-//            layout_current_crop = view.findViewById(R.id.layout_current_crop);
             layout_field_prioritization = view.findViewById(R.id.layout_field_prioritization);
             layout_govt_grower_code = view.findViewById(R.id.layout_govt_grower_code);
             layout_grower_code = view.findViewById(R.id.layout_grower_code);

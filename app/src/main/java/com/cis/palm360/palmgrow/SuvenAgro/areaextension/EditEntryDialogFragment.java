@@ -156,8 +156,6 @@ public class EditEntryDialogFragment extends DialogFragment {
         else if (typeDialog == TYPE_MULTI_EDIT_BOX2) {
             int maxLength = 3;
             int inputBoxMaxLength = 5;
-//            InputFilter[] filters = new InputFilter[]{new InputFilter.LengthFilter(maxLength)};
-//            inputEditBox.setFilters(filters);
             inputEditBox.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             inputBox2.setFilters(new InputFilter[]{new InputFilter.LengthFilter(inputBoxMaxLength)});
 
@@ -183,7 +181,6 @@ public class EditEntryDialogFragment extends DialogFragment {
                 if (typeDialog == TYPE_EDIT_BOX) {
                     if (!TextUtils.isEmpty(inputEditBox.getText().toString())) {
                         dataBundle.putString("inputValue", inputEditBox.getText().toString());
-//                        int cropPos = CommonUtils.getIndex(dataMap.keySet(), CommonUtils.getKeyFromValue(dataMap, dataArr[0]));
                         onDataEditChangeListener.onDataEdited(dataBundle);
                         dismiss();
                     } else {
@@ -257,11 +254,6 @@ public class EditEntryDialogFragment extends DialogFragment {
                 inputEditBox.requestFocus();
                 return false;
             }
-/*            if (inputEditBox.getText().toString().equals("0")) {
-                UiUtils.showCustomToastMessage("Please Enter Valid Number", getActivity(), 1);
-                inputEditBox.requestFocus();
-                return false;
-            }*/
             if (inputEditBox.isShown()) {
                 String value = inputEditBox.getText().toString().trim();
                 try {
@@ -283,11 +275,7 @@ public class EditEntryDialogFragment extends DialogFragment {
                 inputBox2.requestFocus();
                 return false;
             }
-           /* if (inputBox2.getText().toString().equals("0")) {
-                UiUtils.showCustomToastMessage("Please Enter Valid Capacity (Lt/Hr)", getActivity(), 1);
-                inputBox2.requestFocus();
-                return false;
-            }*/
+
             String input = inputBox2.getText().toString().trim();
 
             try {

@@ -351,9 +351,4 @@ public class AlertsDisplayScreen extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public void onItemSelected(int position) {
-//        Toast.makeText(getApplicationContext(), alertsPlotInfoList.get(position).getPlotCode(), Toast.LENGTH_LONG).show();
-//    }
 }

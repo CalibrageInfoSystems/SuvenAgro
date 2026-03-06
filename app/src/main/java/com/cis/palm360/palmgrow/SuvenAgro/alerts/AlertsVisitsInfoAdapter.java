@@ -78,8 +78,6 @@ public class AlertsVisitsInfoAdapter extends RecyclerView.Adapter<AlertsVisitsIn
         holder.tvplotCode.setText(item.getPlotCode() != null ? item.getPlotCode().trim() : "");
         holder.tvfarmerCode.setText(item.getFarmerCode() != null ? item.getFarmerCode().trim() : "");
         holder.tvtotalPlotArea.setText(item.getTotalPlotArea() != null ? item.getTotalPlotArea().trim() : "");
-//        holder.tv_gvtfarmercode.setText(item.getGovtFarmerCode() != null ? item.getGovtFarmerCode().trim() : "");
-//        holder.gvttvPlotID.setText(item.getGovtPlotCode() != null ? item.getGovtPlotCode().trim() : "");
 
         if(item.getGovtFarmerCode() != null && !item.getGovtFarmerCode().isEmpty()){
             holder.gov_farmer_code_layout.setVisibility(View.VISIBLE);
@@ -139,10 +137,6 @@ public class AlertsVisitsInfoAdapter extends RecyclerView.Adapter<AlertsVisitsIn
         this.mList = list;
         notifyDataSetChanged();
     }
-
-//    public void setRecyclerItemClickListener(RecyclerItemClickListener recyclerItemClickListener) {
-//        this.recyclerItemClickListener = recyclerItemClickListener;
-//    }
 
     public class AlertVisitsDetailsViewHolder extends RecyclerView.ViewHolder {
 

@@ -112,18 +112,7 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
         if (CommonUtils.isFromCropMaintenance() || CommonUtils.isComplaint() || CommonUtils.isFromHarvesting() || CommonUtils.isPlotSplitFarmerPlots()) {
             holder.plotDOP_layout.setVisibility(View.VISIBLE);
             String formattedDate = formatDate(plotdetailsObj.getDateofPlanting(), inputFormat1, inputFormat2, outputFormat);
-//            holder.tvPlotDop.setText("Date Of Planting : " + plotdetailsObj.getDateofPlanting());
 
-//            if (!TextUtils.isEmpty(formattedDate)) {
-//                String[] dateTimeParts = formattedDate.split("T");
-//                if (dateTimeParts.length == 2) {
-//                    holder.tvPlotDop.setText(": " + dateTimeParts[0] + " " + dateTimeParts[1]);
-//                } else {
-//                    holder.lastest_vistDate.setText(": " + formattedDate);
-//                }
-//            } else {
-//                holder.lastest_vistDate.setText(": Not Visited");
-//            }
             if (!TextUtils.isEmpty(formattedDate)) {
                 holder.tvPlotDop.setText(": " + formattedDate);
             } else {
@@ -134,15 +123,6 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
         } else {
             holder.plotDOP_layout.setVisibility(View.GONE);
         }
-
-/* TODO
-        if (CommonUtils.isFromFollowUp()) {
-
-            holder.tvplotastatus.setText("Plot Status : " + plotdetailsObj.g() + " " + Config.UOM);
-        } else {
-            holder.tvplotastatus.setText("Plot Status : " + plotdetailsObj.getPlotArea() + " " + Config.UOM);
-        }
-*/
 
         if (CommonUtils.isFromCropMaintenance() || CommonUtils.isComplaint() || CommonUtils.isFromHarvesting() || CommonUtils.isPlotSplitFarmerPlots()) {
 
@@ -159,33 +139,6 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
 
         }
 
-
-
-//        String visitCount = dataAccessHandler.getOnlyTwoValueFromDb(Queries.getInstance().getVisitCount(plotdetailsObj.getPlotID()));
-//
-//        String count = visitCount.split("@")[0];
-//
-//        String date = visitCount.split("@")[1];
-//
-//
-//        if (CommonUtils.isFromCropMaintenance() || CommonUtils.isFromHarvesting()) {
-//
-////            if (!count.equals("0")) {
-////                holder.vist_count.setText("Plot Visit Count : " + count);
-////            } else {
-////                holder.vist_count.setVisibility(View.GONE);
-////                // holder.lastest_vistDate.setVisibility(View.GONE);
-////            }
-//
-//            if (!TextUtils.isEmpty(date))
-//                holder.lastest_vistDate.setText("Last Visit Date : " + date.split("T")[0]);
-//
-//        } else {
-//            //holder.vist_count.setVisibility(View.GONE);
-//            holder.lastest_vistDate.setVisibility(View.GONE);
-//        }
-
-
         String visitCount = dataAccessHandler.getOnlyTwoValueFromDb(Queries.getInstance().getVisitCount(plotdetailsObj.getPlotID()));
         String harvestvisitCount = dataAccessHandler.getOnlyTwoValueFromDb(Queries.getInstance().getHarvestVisitCount(plotdetailsObj.getPlotID()));
 
@@ -196,10 +149,6 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
         String harvestcount = harvestvisitCount.split("@")[0];
         String lastharvestdate = harvestvisitCount.split("@")[1];
         Log.d("Harvestdate", lastharvestdate + "");
-
-//        SimpleDateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss" );
-//        SimpleDateFormat inputFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss");
 
         if (CommonUtils.isFromCropMaintenance() || CommonUtils.isFromHarvesting() || CommonUtils.isPlotSplitFarmerPlots()) {
             // Handling last visit date
@@ -242,74 +191,6 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
             holder.lastest_harvestDate_layout.setVisibility(View.GONE);
         }
 
-//
-//        String count = visitCount.split("@")[0];
-//        String cmlastvisitdate = visitCount.split("@")[1];
-//        Log.d("CMdate", cmlastvisitdate + "");
-//        String harvestcount = harvestvisitCount.split("@")[0];
-//        String lastharvestdate = harvestvisitCount.split("@")[1];
-//        Log.d("Harvestdate", lastharvestdate + "" );
-//
-//        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-//        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss");
-//
-//        if (CommonUtils.isFromCropMaintenance() || CommonUtils.isFromHarvesting()) {
-//            // Handling last visit date
-//            if (TextUtils.isEmpty(cmlastvisitdate) ||  cmlastvisitdate.equalsIgnoreCase("null")) {
-//
-//                holder.lastest_vistDate.setText("Last CM Visit Date : " + "Not Visited");
-//
-//            } else {
-//                Date parsedDate = null;
-//                try {
-//                    parsedDate = inputFormat.parse(cmlastvisitdate);
-//                } catch (ParseException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                String formattedDate = outputFormat.format(parsedDate);
-//
-//                Log.d("formattedCMDate", formattedDate + "");
-//
-//                String[] dateTimeParts = formattedDate.split("T");
-//                if (dateTimeParts.length == 2) {
-//                    holder.lastest_vistDate.setText("Last CM Visit Date : " + dateTimeParts[0] + " " + dateTimeParts[1]);
-//                } else {
-//                    holder.lastest_vistDate.setText("Last CM Visit Date : " + formattedDate);
-//                }
-//            }
-//
-//            // Handling last harvest date
-//            if (TextUtils.isEmpty(lastharvestdate) || lastharvestdate.equalsIgnoreCase("null")) {
-//                holder.lastest_harvestDate.setText("Last Harvesting Date : " + "Not Visited");
-//
-//            } else {
-//                Date parsedDate = null;
-//                try {
-//                    parsedDate = inputFormat.parse(lastharvestdate);
-//                } catch (ParseException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                String formattedHarvestDate = outputFormat.format(parsedDate);
-//
-//                Log.d("formattedHarvestingDate", formattedHarvestDate + "");
-//
-//
-//                String[] dateTimeParts = formattedHarvestDate.split("T");
-//                if (dateTimeParts.length == 2) {
-//                    holder.lastest_harvestDate.setText("Last Harvesting Date : " + dateTimeParts[0] + " " + dateTimeParts[1]);
-//                } else {
-//                    holder.lastest_harvestDate.setText("Last Harvesting Date : " + formattedHarvestDate);
-//                }
-//            }
-//        }
-//        else {
-//            //holder.vist_count.setVisibility(View.GONE);
-//            holder.lastest_vistDate.setVisibility(View.GONE);
-//            holder.lastest_harvestDate.setVisibility(View.GONE);
-//        }
-
-
-
         holder.convertView.setOnClickListener(v -> {
             Log.v(FarmerPlotDetailsAdapter.class.getSimpleName(), "#### clicked position " + position);
             clickListener.onItemClicked(position, holder.convertView);
@@ -338,8 +219,6 @@ public class FarmerPlotDetailsAdapter extends SelectableAdapter<FarmerPlotDetail
                     currentLatitude = Double.parseDouble(latlong[0]);
                     currentLongitude = Double.parseDouble(latlong[1]);
                     String uri = "http://maps.google.com/maps?saddr=" + currentLatitude + "," + currentLongitude + "(" + "Village Name = " + plotdetailsObj.getVillageName() + "/" + "LandMark = " + plotdetailsObj.getPlotLandMark() + ")&daddr=" + land_lattitude + "," + land_longitude;
-//                    String uri = String.format(Locale.ROOT, "geo:%f,%f?z=%d&q=%f,%f (%s)",
-//                            ""+latlong[0], ""+latlong[1], 100, ""+yieldDataArr[0], ""+yieldDataArr[1], "Village Name = " + prospectivePlotsModels.get(position).getPlotVillageName() +  "MandalName = " + prospectivePlotsModels.get(position).getMandalName());
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                     context.startActivity(intent);
 

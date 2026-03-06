@@ -111,8 +111,6 @@ public class DripIrrigationFragment extends Fragment {
     private int selectedImageType = 0;
     FrameLayout layoutDdImage, layoutAckImage;
     ImageView previewImageDd, previewImageAck;
-    //    private LinkedHashMap<String, String> trenchMap = new LinkedHashMap<>();
-//    private LinkedHashMap<String, String> paymentmodeMap = new LinkedHashMap<>();
     private static final int IMAGE_TYPE_DD = 1;
     private static final int IMAGE_TYPE_ACK = 2;
     private static final int IMAGE_TYPE_851 = 3;
@@ -140,7 +138,6 @@ public class DripIrrigationFragment extends Fragment {
     TextView horticulture_honame;
     Integer horticulture_honameid;
     String horticulturehoname;
-   // TextView tv_selectdate, tv_selectcompany, tv_selectpaymentmode, tv_amount, tv_bank_name, tv_account_number, tv_checknumber, tv_trenching, tv_plantcount, tv_comments;
     private boolean isPaymentModeInitialized = false;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
@@ -247,73 +244,6 @@ public class DripIrrigationFragment extends Fragment {
             updateUiListener.updateUserInterface(0);
             UiUtils.showCustomToastMessage("Drip Irrigation data added successfully", getActivity(), 0);
         });
-
-     /*   submit.setOnClickListener(v -> {
-            // Fetch existing saved data
-            dripsavedList = (List<DripIrrigationModel>) DataManager.getInstance().getDataFromManager(DataManager.DripIrrigation);
-            if (dripsavedList == null) {
-                dripsavedList = new ArrayList<>();
-            }
-            List<DripIrrigationModel> datainDbDB = (List<DripIrrigationModel>) dataAccessHandler.getDripIrrigationDetails(Queries.getInstance().getDripIrrigation(CommonConstants.PLOT_CODE), 1);
-            Log.d("savedDripList", "Saved Drip List: " + dripsavedList.size());
-
-            boolean alreadySaved = false;
-            String plotCode = CommonConstants.PLOT_CODE;
-
-            for (DripIrrigationModel model : dripsavedList) {
-                if (model.getStatusTypeId() == 826 && model.getDripStatusDone() == 1) {
-                    alreadySaved = true;
-                    break;
-                }
-            }
-
-            // ✅ If not saved, save NO response for statusTypeId 826
-            if (!alreadySaved) {
-                DripIrrigationModel model = new DripIrrigationModel();
-                model.setPlotCode(plotCode);
-                model.setDate(null);
-                model.setStatusTypeId(848);
-                model.setDripStatusDone(0); // NO
-                model.setCreatedDate(dateFormat.format(new Date()));
-                model.setUpdatedDate(dateFormat.format(new Date()));
-                model.setServerUpdatedStatus(0);
-                model.setIsActive(1); // ✅ Important
-
-                dripsavedList.add(model); // ✅ Using the correct list
-                DataManager.getInstance().addData(DataManager.DripIrrigation, dripsavedList);
-                Log.d("Submit", "✅ Default NO saved for statusTypeId 826");
-            }
-
-            getFragmentManager().popBackStack();
-            updateUiListener.updateUserInterface(0);
-            UiUtils.showCustomToastMessage("Drip Irrigation data added successfully", getActivity(), 0);
-//            DataSavingHelper.savedripirrigation(getActivity(), new ApplicationThread.OnComplete<String>() {
-//                @Override
-//                public void execute(boolean success, String result, String msg) {
-//                    //   Log.e("Drip i rrigation", (result != null ? result : "null") + " " + (msg != null ? msg : "null"));
-//                    Toast.makeText(getActivity(), "onComplete called: " + success, Toast.LENGTH_SHORT).show();
-//
-//                    ProgressBar.hideProgressBar();
-//                    if (success) {
-//                        Log.e("Drip irrigation", "@@@  saved successfully");
-//
-//                        String toastMessage = CommonUtils.isNewRegistration()
-//                                ? "Data saved successfully"
-//                                : "Data updated successfully";
-//
-//                        UiUtils.showCustomToastMessage("Drip Irrigation data added successfully", getActivity(), 0);
-//                        CommonUtilsNavigation.hideKeyBoard(getActivity());
-//                        getActivity().finish(); // ✅ Finish only after success
-//                    } else {
-//                        getActivity().finish();
-//                        UiUtils.showCustomToastMessage("Data saving failed", getActivity(), 1);
-//                    }
-//                }
-//            });
-//            UiUtils.showCustomToastMessage("Drip Irrigation data added successfully", getActivity(), 0);
-//            getActivity().finish();
-        });
-*/
 
         formContainer = view.findViewById(R.id.form_container);
 
@@ -423,17 +353,6 @@ public class DripIrrigationFragment extends Fragment {
         btnCancelPdf = card.findViewById(R.id.btn_cancel_pdf);
 
         EditText PlantCount = card.findViewById(R.id.PlantCount);
-        //tv_selectdate,tv_selectcompany,tv_selectpaymentmode,tv_amount,tv_bank_name,tv_checknumber,tv_trenching,tv_plantcount
-//        tv_comments = card.findViewById(R.id.tv_comments);
-//        tv_selectdate = card.findViewById(R.id.tv_selectdate);
-//        tv_selectcompany = card.findViewById(R.id.tv_selectcompany);
-//        tv_selectpaymentmode = card.findViewById(R.id.tv_selectpaymentmode);
-//        tv_amount = card.findViewById(R.id.tv_amount);
-//        tv_bank_name = card.findViewById(R.id.tv_bank_name);
-//        tv_account_number = card.findViewById(R.id.tv_account_number);
-//        tv_checknumber = card.findViewById(R.id.tv_checknumber);
-//        tv_trenching = card.findViewById(R.id.tv_trenching);
-//        tv_plantcount = card.findViewById(R.id.tv_plantcount);
         tv_ack_image = card.findViewById(R.id.tv_ack_image);
         tv_dd_image = card.findViewById(R.id.tv_dd_image);
         btnUploadDdImage = card.findViewById(R.id.btn_upload_dd_image);
@@ -508,8 +427,7 @@ public class DripIrrigationFragment extends Fragment {
         btnUploadAckImage.setVisibility(View.GONE);
         tv_ack_image.setVisibility(View.GONE);
         tv_dd_image.setVisibility(View.GONE);
-//        btn_delete_image_dd.setVisibility(View.GONE);
-//        btn_delete_image_ack.setVisibility(View.GONE);
+
         btnAddImage851.setVisibility(View.GONE);
         btnAddImage832.setVisibility(View.GONE);
         tvImage851.setVisibility(View.GONE);
@@ -1165,10 +1083,6 @@ public class DripIrrigationFragment extends Fragment {
         int currentIndex = index;
         rgAnswer.setOnCheckedChangeListener((group, checkedId) -> {
             boolean isYes = checkedId == R.id.yes_button;
-//            if (isYes && item.statusTypeId == 826) {
-//                btnNo.setEnabled(false);
-//                btnNo.setAlpha(0.5f);
-//            }
             handleAnswerSelection(isYes, item, card, currentIndex);
         });
 
@@ -2421,8 +2335,6 @@ public class DripIrrigationFragment extends Fragment {
                 return;
             }
             // ✅ Show toast for every step unlocked
-            // Toast.makeText(this, "Next Step is unlocked. Please continue.", Toast.LENGTH_SHORT).show();
-            //Toast.makeText(this,  item.value + " Saved Successfully.", Toast.LENGTH_SHORT).show();
             UiUtils.showCustomToastMessage(item.value + " Saved Successfully.", getActivity(), 0);
 
             // Unlock next question normally (except 6th)
@@ -2437,8 +2349,6 @@ public class DripIrrigationFragment extends Fragment {
             nextBtnNo.setChecked(true);
 
 // Hide radio buttons and OK initially
-//            nextBtnYes.setVisibility(View.GONE);
-//            nextBtnNo.setVisibility(View.GONE);
             nextBtnOk.setVisibility(View.GONE);
 
 // Only show Yes (enabled), and wait for manual tap
@@ -2497,8 +2407,6 @@ public class DripIrrigationFragment extends Fragment {
 
         } else {
             UiUtils.showCustomToastMessage(item.value + " Saved Successfully.", getActivity(), 0);
-
-            //       Toast.makeText(this, "All steps saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -2561,7 +2469,6 @@ public class DripIrrigationFragment extends Fragment {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-//                    Toast.makeText(getActivity(), "Image selection failed", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Image selection failed", getActivity(), 1);
 
                 }
@@ -2601,42 +2508,9 @@ public class DripIrrigationFragment extends Fragment {
                         break;
 
                     default:
-//                        Toast.makeText(getActivity(), "No image view target specified", Toast.LENGTH_SHORT).show();
                         UiUtils.showCustomToastMessage("No image view target specified", getActivity(), 1);
                 }
             }
-
-            // ✅ Assign Bitmap to the correct ImageView
-//            if (bitmap != null) {
-//                if (currentImageView != null) {
-//                    currentImageView.setImageBitmap(bitmap);
-//                    currentImageView.setVisibility(View.VISIBLE);
-//                    layoutDdImage.setVisibility(View.VISIBLE);
-//                    currentPhotoBitmap = bitmap;
-//                    btnUploadDdImage.setVisibility(View.GONE);
-//                } else if (currentImageView2 != null) {
-//                    currentImageView2.setImageBitmap(bitmap);
-//                    currentImageView2.setVisibility(View.VISIBLE);
-//                    layoutAckImage.setVisibility(View.VISIBLE);
-//                    currentPhotoBitmap2 = bitmap;
-//                    btnUploadAckImage.setVisibility(View.GONE);
-//                } else if (currentImageView851 != null) {
-//                    currentImageView851.setImageBitmap(bitmap);
-//                    currentImageView851.setVisibility(View.VISIBLE);
-//                    layoutImage851.setVisibility(View.VISIBLE);
-//                    currentPhotoBitmap851 = bitmap;
-//                    btnAddImage851.setVisibility(View.GONE);
-//                } else if (currentImageView832 != null) {
-//                    currentImageView832.setImageBitmap(bitmap);
-//                    currentImageView832.setVisibility(View.VISIBLE);
-//                    layoutImage832.setVisibility(View.VISIBLE);
-//                    currentPhotoBitmap832 = bitmap;
-//                    btnAddImage832.setVisibility(View.GONE);
-//                } else {
-//                    Toast.makeText(this, "No image view set", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-
 
             else if (requestCode == PICK_PDF_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
                 Uri selectedPdfUri = data.getData();
@@ -2651,14 +2525,9 @@ public class DripIrrigationFragment extends Fragment {
                     // ✅ Save and update UI
                     currentPdfPath = filePath;
                     if (currentPdfButton != null) {
-                        //  currentPdfButton.setText(currentPdffilename);
-
-
                         currentPdfButton.setVisibility(View.GONE);
                         layoutPdfPreview.setVisibility(View.VISIBLE);
                         tvPdfFileName.setText(currentPdffilename);
-                        //   currentPdfPath = file.getAbsolutePath();
-
                     }
 
                     if (currentDeletePdf != null) {
@@ -2667,7 +2536,6 @@ public class DripIrrigationFragment extends Fragment {
 
                     Log.e("PDF_UPLOAD", "Saved PDF path: " + filePath);
                 } else {
-//                    Toast.makeText(getActivity(), "Failed to save PDF file", Toast.LENGTH_SHORT).show();
                     UiUtils.showCustomToastMessage("Failed to save PDF file", getActivity(), 1);
                     Log.e("PDF_UPLOAD", "File path is null. PDF not saved.");
                 }
@@ -2735,8 +2603,6 @@ public class DripIrrigationFragment extends Fragment {
             return null;
         }
         File dir = new File(CommonUtils.getFileRootPath() + "PalmGrow/Drip_Images");
-
-       // File dir = new File(Environment.getExternalStorageDirectory(), "PalmGrow/Drip_Images");
         if (!dir.exists()) dir.mkdirs();
 
         File file = new File(dir, fileName + "_" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".jpg");

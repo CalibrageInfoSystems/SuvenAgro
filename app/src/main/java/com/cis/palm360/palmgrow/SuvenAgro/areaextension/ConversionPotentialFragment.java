@@ -262,22 +262,15 @@ public class ConversionPotentialFragment extends Fragment {
 
         datePickerListener = (view, selectedDay, selectedMonth, selectedYear) -> {
             Calendar calendar = Calendar.getInstance();
-//                if (calendar.get(Calendar.YEAR) == selectedYear && selectedMonth + 1 <= calendar.get(Calendar.MONTH)) {
-//                    UiUtils.showCustomToastMessageLong("Invalid Month", getActivity(), 0);
-//                } else {
             calendar.set(selectedYear, selectedMonth+1, selectedDay, 0, 0, 0);
             harverstmonthofcurrentcropEdit.setText(new SimpleDateFormat("MM/yyyy").format(calendar.getTime()));
 
-//                }
         };
         harvestingDatePickListener = (view, selectedDay, selectedMonth, selectedYear) -> {
             Calendar calendar = Calendar.getInstance();
-//                if (calendar.get(Calendar.YEAR) == selectedYear && selectedMonth + 1 <= calendar.get(Calendar.MONTH)) {
-//                    UiUtils.showCustomToastMessageLong("Invalid Month", getActivity(), 0);
-//                } else {
+
             calendar.set(selectedYear, selectedMonth+1, selectedDay, 0, 0, 0);
             expectedmonthofshowing.setText(new SimpleDateFormat("MM/yyyy").format(calendar.getTime()));
-//                }
         };
         farmerReadytoConverSpin.setOnTouchListener((v, event) -> {
             isUserInteraction = true;
@@ -354,18 +347,9 @@ public class ConversionPotentialFragment extends Fragment {
     }
 
     private void saveConversionData() {
-//        followUp = new FollowUp();
         followUp.setIssuedetails(mainIssueCurrentCrop);
         followUp.setComments(comments);
-       /* Date date = null;
-        try {
-            date = inputFormat.parse(harverstmonthofcurrentcropEdit.getText().toString());
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        String lastDate = outputFormat.format(date);*/
         followUp.setHarvestingmonth(harverstmonthofcurrentcropEdit.getText().toString());
         followUp.setPotentialscore(potentialscoreSpin.getSelectedItemPosition());
         followUp.setIsfarmerreadytoconvert((farmerReadytoConverSpin.getSelectedItemPosition() == 1) ? 1 : 0);
@@ -381,11 +365,7 @@ public class ConversionPotentialFragment extends Fragment {
         comments = commentsEdit.getText().toString().trim();
         harvestMonthOfCurrentCrop = harverstmonthofcurrentcropEdit.getText().toString();
         expectedmonthofshowing_str = expectedmonthofshowing.getText().toString();
-//        if (TextUtils.isEmpty(mainIssueCurrentCrop)) {
-//            UiUtils.showCustomToastMessageLong(getActivity().getResources().getString(R.string.error_issueofcurrentcrop), getActivity(), 1);
-//            mainissuecurrentcropEdit.requestFocus();
-//            return false;
-//        }
+
         if (CommonUtils.isEmptySpinner(farmerReadytoConverSpin)) {
             UiUtils.showCustomToastMessage("Please Select Grower is Ready to Convert or Not", getActivity(), 1);
             return false;

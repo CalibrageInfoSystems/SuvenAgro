@@ -107,11 +107,6 @@ public class PreViewAreaCalScreen extends OilPalmBaseActivity {
             public void onClick(View v) {
                 String generatedplotCode = CommonConstants.PLOT_CODE;
 
-//                if (CommonUtils.isNewPlotRegistration()){
-//                    Log.d("recordedBoundries", recordedBoundries);
-//                }else{
-//                    Log.d("FromnewPlotReg", "No");
-//                }
                 Log.d("recordedBoundries", recordedBoundries.size() + "");
               if (null != firstFourCoordinates && !firstFourCoordinates.isEmpty() && !TextUtils.isEmpty(gpsArea)) { // TODO for release
                      //if ( !TextUtils.isEmpty(gpsArea)) { //TODO for unittesting
