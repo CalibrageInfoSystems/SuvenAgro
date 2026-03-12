@@ -126,6 +126,8 @@ public class ComplaintDetailsFragment extends Fragment implements View.OnClickLi
     private String audioFileName = "";
     private Toolbar toolbar;
     private ActionBar actionBar;
+    private MediaPlayer mediaPlayer;
+    private boolean isPlaying = false;
 
     public ComplaintDetailsFragment() {
 
@@ -416,6 +418,37 @@ public class ComplaintDetailsFragment extends Fragment implements View.OnClickLi
                 } else {
                     Log.d("Audio", "Playback mode");
 
+                    if (modePlay) {
+
+                        if (mediaPlayer == null) {
+                            mediaPlayer = new MediaPlayer();
+                            try {
+                                mediaPlayer.setDataSource(audioFilePath);
+                                mediaPlayer.prepare();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        if (!isPlaying) {
+
+                            mediaPlayer.start();
+                            farmer_audio1.setImageResource(R.drawable.pause_button);
+                            isPlaying = true;
+
+                            mediaPlayer.setOnCompletionListener(mp -> {
+                                farmer_audio1.setImageResource(R.mipmap.play_button);
+                                isPlaying = false;
+                            });
+
+                        } else {
+
+                            mediaPlayer.pause();
+                            farmer_audio1.setImageResource(R.mipmap.play_button);
+                            isPlaying = false;
+                        }
+                        return;
+                    }
                     if (audioFileRepo == null) {
                         audioFileName = CommonConstants.COMPLAINT_CODE;
                     } else {
