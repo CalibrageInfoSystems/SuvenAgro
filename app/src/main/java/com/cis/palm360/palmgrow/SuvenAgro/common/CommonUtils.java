@@ -931,11 +931,6 @@ public class CommonUtils {
         if (null == inputSpinner) return true;
         return inputSpinner.getSelectedItemPosition() == -1 || inputSpinner.getSelectedItemPosition() == 0;
     }
-//    public static boolean isEmptySpinner(Spinner spinner) {
-//        boolean isEmpty = spinner.getSelectedItemPosition() == 0;
-//        Log.d("SpinnerValidation", "Spinner: " + spinner.getId() + " isEmpty: " + isEmpty);
-//        return isEmpty;
-//    }
 
     //to calculate the distance
     public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {

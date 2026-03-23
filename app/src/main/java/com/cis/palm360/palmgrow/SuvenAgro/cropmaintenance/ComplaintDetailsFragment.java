@@ -126,7 +126,7 @@ public class ComplaintDetailsFragment extends Fragment implements View.OnClickLi
     private String audioFileName = "";
     private Toolbar toolbar;
     private ActionBar actionBar;
-
+    MediaPlayer mediaPlayer;
     public ComplaintDetailsFragment() {
 
     }
@@ -392,55 +392,102 @@ public class ComplaintDetailsFragment extends Fragment implements View.OnClickLi
 
         // Handle audio recording/playback
         if (id == R.id.farmer_audio1) {
+
             Log.d("Audio", "Audio section clicked");
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                     !CommonUtils.isPermissionAllowed(getActivity(), Manifest.permission.RECORD_AUDIO)) {
+
                 Log.v("Permissions", "Audio recording permission not granted");
-                ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_EXTERNAL_STORAGE, RequestPermissionCode);
-            } else {
-                if (newComplaint && !modePlay) {
-                    Log.d("Audio", "New complaint - recording mode");
-                    try {
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("filePath", createFile(1).getAbsolutePath());
+                ActivityCompat.requestPermissions(getActivity(),
+                        PERMISSIONS_EXTERNAL_STORAGE,
+                        RequestPermissionCode);
 
-                        ComplaintsAudioFragment complaintsAudioFragment = new ComplaintsAudioFragment();
-                        complaintsAudioFragment.setRecordingFinishedListener(this);
-                        complaintsAudioFragment.setArguments(bundle);
-                        complaintsAudioFragment.show(fm, "recording screen");
+                return;
+            }
 
-                    } catch (IOException e) {
-                        Log.e("Audio", "Error while creating file for recording", e);
-                    }
+            // ================= RECORDING MODE =================
+            if (newComplaint && !modePlay) {
+
+                Log.d("Audio", "Opening recording screen");
+
+                try {
+
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("filePath", createFile(1).getAbsolutePath());
+
+                    ComplaintsAudioFragment complaintsAudioFragment = new ComplaintsAudioFragment();
+                    complaintsAudioFragment.setRecordingFinishedListener(this);
+                    complaintsAudioFragment.setArguments(bundle);
+                    complaintsAudioFragment.show(fm, "recording_screen");
+
+                } catch (IOException e) {
+                    Log.e("Audio", "Error creating file for recording", e);
+                }
+
+            }
+
+
+            // ================= PLAYBACK MODE =================
+            else {
+
+                Log.d("Audio", "Playback mode");
+
+                if (audioFileRepo == null) {
+                    audioFileName = CommonConstants.COMPLAINT_CODE;
                 } else {
-                    Log.d("Audio", "Playback mode");
+                    audioFileName = audioFileRepo.getFileName();
+                }
 
-                    if (audioFileRepo == null) {
-                        audioFileName = CommonConstants.COMPLAINT_CODE;
-                    } else {
-                        audioFileName = audioFileRepo.getFileName();
-                    }
+                String audioPath = CommonUtils.getAudioFilePath(audioFileName + ".mp3");
 
-                    if (CommonUtils.isFileExisted(CommonUtils.getAudioFilePath(audioFileName + ".mp3"))) {
-                        try {
+                if (CommonUtils.isFileExisted(audioPath)) {
+
+                    try {
+
+                        if (modePlay) {
+
+                            Log.d("Audio", "Starting playback");
+
                             RecordingItem recordingItem = new RecordingItem();
-                            recordingItem.setFilePath(audioFilePath);
+                            recordingItem.setFilePath(audioPath);
                             recordingItem.setName(audioFileName);
 
-                            PlaybackFragment playbackFragment = new PlaybackFragment().newInstance(recordingItem);
-                            FragmentTransaction transaction = ((FragmentActivity) mContext)
-                                    .getSupportFragmentManager()
-                                    .beginTransaction();
+                            PlaybackFragment playbackFragment =
+                                    PlaybackFragment.newInstance(recordingItem);
+
+                            FragmentTransaction transaction =
+                                    ((FragmentActivity) mContext)
+                                            .getSupportFragmentManager()
+                                            .beginTransaction();
+
                             playbackFragment.show(transaction, "dialog_playback");
 
-                        } catch (Exception e) {
-                            Log.e("Audio", "Exception during playback", e);
+                            // change icon to STOP
+                            farmer_audio1.setImageResource(R.mipmap.app_logo);
+
+                            modePlay = false;
+
+                        } else {
+
+                            Log.d("Audio", "Stopping playback");
+
+                            // change icon back to PLAY
+                            farmer_audio1.setImageResource(R.mipmap.play_button);
+
+                            modePlay = true;
                         }
-                    } else {
-                        Log.d("Audio", "Audio file not found, downloading...");
-                        new DownAudioloadFile().execute();
+
+                    } catch (Exception e) {
+                        Log.e("Audio", "Exception during playback", e);
                     }
+
+                } else {
+
+                    Log.d("Audio", "Audio file not found, downloading...");
+                    new DownAudioloadFile().execute();
                 }
             }
         }
@@ -890,13 +937,25 @@ Log.e("saveBtn","saveBtn");
     //on Audio recording finished
     @Override
     public void onRecordingFinished(String filePath) {
+
         audioFilePath = filePath;
-        audioFileNameTxt.setText("" + CommonUtils.getFilename(filePath));
+
+        audioFileNameTxt.setText(CommonUtils.getFilename(filePath));
         audioFileNameTxt.setVisibility(View.VISIBLE);
+
         farmer_audio1.setImageResource(R.mipmap.play_button);
+
         modePlay = true;
-        //new DownAudioloadFile().execute();
     }
+//    @Override
+//    public void onRecordingFinished(String filePath) {
+//        audioFilePath = filePath;
+//        audioFileNameTxt.setText("" + CommonUtils.getFilename(filePath));
+//        audioFileNameTxt.setVisibility(View.VISIBLE);
+//        farmer_audio1.setImageResource(R.mipmap.play_button);
+//        modePlay = true;
+//        //new DownAudioloadFile().execute();
+//    }
 
     private void loadImageFromStorage(final String path, final ImageView imageViewToUpdate, final ComplaintRepository complaintRepository) {
         if (complaintRepository != null) {
@@ -1079,27 +1138,76 @@ Log.e("saveBtn","saveBtn");
 
          ProgressBar.hideProgressBar();
 
-         if (!TextUtils.isEmpty(audioFilePath)) {  // audioUrl is your remote link
+         if (!TextUtils.isEmpty(audioFilePath)) {
+
              try {
-                 MediaPlayer mediaPlayer = new MediaPlayer();
+
+                 mediaPlayer = new MediaPlayer();
                  mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                 mediaPlayer.setDataSource(audioFilePath); // play directly from URL
-                 mediaPlayer.prepareAsync();          // async prepare
+                 mediaPlayer.setDataSource(audioFilePath);
+                 mediaPlayer.prepareAsync();
+
                  mediaPlayer.setOnPreparedListener(mp -> {
-                     mp.start(); // start playback when ready
+
+                     mp.start();
+
+                     // CHANGE ICON TO STOP
+                     farmer_audio1.setImageResource(R.mipmap.app_logo);
+
+                     modePlay = false;
+
+                     audioFileNameTxt.setText(audioFileName);
                  });
 
-                 // Optional: show info on UI
-                 audioFileNameTxt.setText(audioFileName);
+                 mediaPlayer.setOnCompletionListener(mp -> {
+
+                     // RESET ICON WHEN AUDIO FINISHES
+                     farmer_audio1.setImageResource(R.mipmap.play_button);
+
+                     modePlay = true;
+
+                     mp.release();
+                     mediaPlayer = null;
+                 });
 
              } catch (IOException e) {
+
                  Log.e(LOG_TAG, "Error playing audio", e);
                  UiUtils.showCustomToastMessage("Error playing audio", mContext, 1);
              }
+
          } else {
+
              UiUtils.showCustomToastMessage("Audio URL is empty", mContext, 1);
          }
      }
+//     @Override
+//     protected void onPostExecute(String s) {
+//         super.onPostExecute(s);
+//
+//         ProgressBar.hideProgressBar();
+//
+//         if (!TextUtils.isEmpty(audioFilePath)) {  // audioUrl is your remote link
+//             try {
+//                 MediaPlayer mediaPlayer = new MediaPlayer();
+//                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//                 mediaPlayer.setDataSource(audioFilePath); // play directly from URL
+//                 mediaPlayer.prepareAsync();          // async prepare
+//                 mediaPlayer.setOnPreparedListener(mp -> {
+//                     mp.start(); // start playback when ready
+//                 });
+//
+//                 // Optional: show info on UI
+//                 audioFileNameTxt.setText(audioFileName);
+//
+//             } catch (IOException e) {
+//                 Log.e(LOG_TAG, "Error playing audio", e);
+//                 UiUtils.showCustomToastMessage("Error playing audio", mContext, 1);
+//             }
+//         } else {
+//             UiUtils.showCustomToastMessage("Audio URL is empty", mContext, 1);
+//         }
+//     }
 
 
     }
